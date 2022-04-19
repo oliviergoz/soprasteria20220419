@@ -8,4 +8,8 @@ public class App {
 	public void olivier() {
 		
 	}
+	
+	public static void hello() {
+		System.out.println("bonjour");
+	}
 }
