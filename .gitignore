@@ -1,0 +1,9 @@
+#fichier genere par eclispe
+.settings/
+.classpath
+.project
+#dossier genere par maven
+target/
+#merde de macos
+.DS_Store
+
