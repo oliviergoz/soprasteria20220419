@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+<!--config jpa-->
+
+<!-- unite de persistence -->
+<persistence-unit name="formation" transaction-type="RESOURCE_LOCAL">
+	<!-- implementation de JPA -->
+	<provider>
+		org.hibernate.jpa.HibernatePersistenceProvider
+	</provider>
+	<!-- la suite de la config est propre à hibernate-->
+	<properties>
+		<!-- driver jdbc -->
+		<property name="hibernate.connection.driver" value="org.postgresql.Driver"/>
+		<!-- url base -->
+		<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/formation"/>
+		<property name="hibernate.connection.user" value="postgres"/>
+		<property name="hibernate.connection.password" value="postgres"/>
+		<!-- dialect hibernate -->
+		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
+		
+		<!-- controle de la base validate,create,update... -->
+		<property name="hibernate.hbm2ddl.auto" value="validate"/>
+		
+		<property name="hibernate.show_sql" value="true"/>
+		<property name="hibernate.format_sql" value="true"/>
+	</properties>
+</persistence-unit>
+
+</persistence>
