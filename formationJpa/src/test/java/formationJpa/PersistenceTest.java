@@ -1,31 +1,25 @@
 package formationJpa;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import formationJpa.dao.DaoPersonne;
+import formationJpa.entity.Personne;
+import formationJpa.util.Context;
 
 public class PersistenceTest {
 	public static void main(String[] args) {
-		EntityManagerFactory emf= Persistence.createEntityManagerFactory("formation");
+		DaoPersonne daoPersonne=Context.getDaoPersonne();
 		
 		Personne olivier=new Personne();
 		olivier.setId(1L);
+		daoPersonne.insert(olivier);
 		olivier.setPrenom("olivier");
-		olivier.setNom("gozlan");
+		daoPersonne.update(olivier);
 		
-		EntityManager em=emf.createEntityManager();
-		//crud
-		//insert,update,delete,select key
+		System.out.println(daoPersonne.findById(1L));
+		System.out.println(daoPersonne.findById(10L));
 		
+		daoPersonne.delete(olivier);
 		
-		//pour toute les modifications => transtaction
-		//insert
-		EntityTransaction tx=em.getTransaction();
-		tx.begin();
-		em.persist(olivier);
-		tx.commit();
-		
-		emf.close();
+		//en dernier
+		Context.destroyEntityManagerFactory();
 	}
 }
