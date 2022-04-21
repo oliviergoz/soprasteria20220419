@@ -5,13 +5,18 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "arene")
+@SequenceGenerator(name="seqArene",sequenceName = "seq_arene",initialValue = 10,allocationSize = 1)
 public class Arene {
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqArene")
 	private Long id;
 	private String nom;
 	private int ordre;
