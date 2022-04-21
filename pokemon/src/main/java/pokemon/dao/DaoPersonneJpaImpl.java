@@ -6,31 +6,30 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import pokemon.entity.Arene;
 import pokemon.entity.Personne;
 import pokemon.util.Context;
 
-public class DaoAreneJpaImpl implements DaoArene {
+public class DaoPersonneJpaImpl implements DaoPersonne {
 
 	@Override
-	public Arene findById(Long id) {
+	public Personne findById(Long id) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		Arene arene = em.find(Arene.class, id);
+		Personne personne = em.find(Personne.class, id);
 		em.close();
-		return arene;
+		return personne;
 	}
 
 	@Override
-	public List<Arene> findAll() {
+	public List<Personne> findAll() {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Arene> query = em.createQuery("select a from Arene a", Arene.class);
-		List<Arene> arenes = query.getResultList();
+		TypedQuery<Personne> query = em.createQuery("select p from Personne p", Personne.class);
+		List<Personne> personnes = query.getResultList();
 		em.close();
-		return arenes;
+		return personnes;
 	}
 
 	@Override
-	public void insert(Arene obj) {
+	public void insert(Personne obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -40,7 +39,7 @@ public class DaoAreneJpaImpl implements DaoArene {
 	}
 
 	@Override
-	public Arene update(Arene obj) {
+	public Personne update(Personne obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -55,13 +54,13 @@ public class DaoAreneJpaImpl implements DaoArene {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.remove(em.find(Arene.class, id));
+		em.remove(em.find(Personne.class, id));
 		tx.commit();
 		em.close();
 	}
 
 	@Override
-	public void delete(Arene obj) {
+	public void delete(Personne obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
