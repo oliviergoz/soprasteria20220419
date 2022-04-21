@@ -26,13 +26,13 @@ import javax.persistence.Transient;
 @MappedSuperclass
 //@Entity
 //@Table(name = "person")
-@SequenceGenerator(name="seqPersonne",sequenceName = "seq_person",initialValue = 100,allocationSize = 1)
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name = "type",discriminatorType = DiscriminatorType.STRING,length = 5)
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Personne {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqPersonne")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPersonne")
+	//@SequenceGenerator(name = "seqPersonne", sequenceName = "seq_person", initialValue = 100, allocationSize = 1)
 	@Column(name = "id")
 	private Long id;
 	@Column(name = "first_name", nullable = false, length = 200)
