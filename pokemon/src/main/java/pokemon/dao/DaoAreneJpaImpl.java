@@ -1,43 +1,31 @@
-package formationJpa.dao;
+package pokemon.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
-import formationJpa.entity.Personne;
-import formationJpa.util.Context;
+import pokemon.entity.Arene;
+import pokemon.util.Context;
 
-public class DaoPersonneJpaImplementation implements DaoPersonne {
+public class DaoAreneJpaImpl implements DaoArene {
 
 	@Override
-	public Personne findById(Long id) {
+	public Arene findById(Long id) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		Personne p = em.find(Personne.class, id);
+		Arene arene = em.find(Arene.class, id);
 		em.close();
-		return p;
+		return arene;
 	}
 
 	@Override
-	public List<Personne> findAll() {
-		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		// jpql
-		// meme synthaxe sql
-		// select from where join group by
-		// travaille sur des objets(entity)
-//		Query query = em.createQuery("select p from Personne p");
-		TypedQuery<Personne> query = em.createQuery("select p from Personne p", Personne.class);
-		List<Personne> personnes = query.getResultList();
-		em.close();
-		return personnes;
+	public List<Arene> findAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void insert(Personne obj) {
+	public void insert(Arene obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -47,7 +35,7 @@ public class DaoPersonneJpaImplementation implements DaoPersonne {
 	}
 
 	@Override
-	public Personne update(Personne obj) {
+	public Arene update(Arene obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -62,20 +50,19 @@ public class DaoPersonneJpaImplementation implements DaoPersonne {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.remove(em.find(Personne.class, id));
+		em.remove(em.find(Arene.class, id));
 		tx.commit();
 		em.close();
 	}
 
 	@Override
-	public void delete(Personne obj) {
+	public void delete(Arene obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		em.remove(em.merge(obj));
 		tx.commit();
 		em.close();
-
 	}
 
 }
