@@ -3,13 +3,11 @@ package formationJpa.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import formationJpa.entity.Personne;
+import formationJpa.entity.Stagiaire;
 import formationJpa.util.Context;
 
 public class DaoPersonneJpaImplementation implements DaoPersonne {
@@ -17,7 +15,7 @@ public class DaoPersonneJpaImplementation implements DaoPersonne {
 	@Override
 	public Personne findById(Long id) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		Personne p = em.find(Personne.class, id);
+		Personne p =  em.find(Personne.class, id);
 		em.close();
 		return p;
 	}
