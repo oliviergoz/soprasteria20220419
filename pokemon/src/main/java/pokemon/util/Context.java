@@ -5,18 +5,32 @@ import javax.persistence.Persistence;
 
 import pokemon.dao.DaoArene;
 import pokemon.dao.DaoAreneJpaImpl;
-import pokemon.dao.DaoPersonne;
-import pokemon.dao.DaoPersonneJpaImpl;
+import pokemon.dao.DaoDresseur;
+import pokemon.dao.DaoDresseurJpaImpl;
+import pokemon.dao.DaoInfirmiere;
+import pokemon.dao.DaoInfirmiereJpaImpl;
+import pokemon.dao.DaoItem;
+import pokemon.dao.DaoItemJpaImpl;
 
 public class Context {
 
 	private static EntityManagerFactory emf = null;
 
 	private static DaoArene daoArene = new DaoAreneJpaImpl();
-	private static DaoPersonne daoPersonne = new DaoPersonneJpaImpl();
+	private static DaoDresseur daoDresseur = new DaoDresseurJpaImpl();
+	private static DaoInfirmiere daoInfirmire = new DaoInfirmiereJpaImpl();
+	private static DaoItem daoItem = new DaoItemJpaImpl();
 
-	public static DaoPersonne getDaoPersonne() {
-		return daoPersonne;
+	public static DaoItem getDaoItem() {
+		return daoItem;
+	}
+
+	public static DaoInfirmiere getDaoInfirmire() {
+		return daoInfirmire;
+	}
+
+	public static DaoDresseur getDaoDresseur() {
+		return daoDresseur;
 	}
 
 	public static DaoArene getDaoArene() {

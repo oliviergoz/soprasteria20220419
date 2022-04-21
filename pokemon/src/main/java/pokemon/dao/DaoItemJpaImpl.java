@@ -6,30 +6,30 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import pokemon.entity.Personne;
+import pokemon.entity.Item;
 import pokemon.util.Context;
 
-public class DaoPersonneJpaImpl implements DaoPersonne {
+public class DaoItemJpaImpl implements DaoItem {
 
 	@Override
-	public Personne findById(Long id) {
+	public Item findById(Integer id) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		Personne personne = em.find(Personne.class, id);
+		Item item = em.find(Item.class, id);
 		em.close();
-		return personne;
+		return item;
 	}
 
 	@Override
-	public List<Personne> findAll() {
+	public List<Item> findAll() {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Personne> query = em.createQuery("select p from Personne p", Personne.class);
-		List<Personne> personnes = query.getResultList();
+		TypedQuery<Item> query = em.createQuery("select p from Item p", Item.class);
+		List<Item> items = query.getResultList();
 		em.close();
-		return personnes;
+		return items;
 	}
 
 	@Override
-	public void insert(Personne obj) {
+	public void insert(Item obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -39,7 +39,7 @@ public class DaoPersonneJpaImpl implements DaoPersonne {
 	}
 
 	@Override
-	public Personne update(Personne obj) {
+	public Item update(Item obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -50,17 +50,17 @@ public class DaoPersonneJpaImpl implements DaoPersonne {
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.remove(em.find(Personne.class, id));
+		em.remove(em.find(Item.class, id));
 		tx.commit();
 		em.close();
 	}
 
 	@Override
-	public void delete(Personne obj) {
+	public void delete(Item obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
