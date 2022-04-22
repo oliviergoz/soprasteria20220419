@@ -1,27 +1,49 @@
 package pokemon.entity;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "arene")
-@SequenceGenerator(name="seqArene",sequenceName = "seq_arene",initialValue = 10,allocationSize = 1)
+@SequenceGenerator(name = "seqArene", sequenceName = "seq_arene", initialValue = 10, allocationSize = 1)
 public class Arene {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqArene")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqArene")
 	private Long id;
 	private String nom;
 	private int ordre;
 	@Enumerated(EnumType.STRING)
 	private Type type;
+	@OneToOne
+	@JoinColumn(name = "maitre_id", foreignKey = @ForeignKey(name = "arene_maitre_id_fk"))
+	private Dresseur maitre;
+
+//	// version on est sbires d'une seule arene
+//	@OneToMany(mappedBy = "arene")
+//	private Set<Dresseur> sbires;
+
+	// on est sbires dans plusieurs arenes
+	@ManyToMany
+	@JoinTable(name = "sbires", 
+				joinColumns = @JoinColumn(name = "arene_id", foreignKey = @ForeignKey(name = "sbire_arene_id_fk")), 
+				inverseJoinColumns = @JoinColumn(name = "sbire_id", foreignKey = @ForeignKey(name = "sbire_sbire_id_fk")))
+	private Set<Dresseur> sbires;
 
 	public Arene() {
 
@@ -57,6 +79,14 @@ public class Arene {
 
 	public void setType(Type type) {
 		this.type = type;
+	}
+
+	public Dresseur getMaitre() {
+		return maitre;
+	}
+
+	public void setMaitre(Dresseur maitre) {
+		this.maitre = maitre;
 	}
 
 	@Override

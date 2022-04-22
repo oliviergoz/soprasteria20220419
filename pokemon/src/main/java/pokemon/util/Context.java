@@ -7,6 +7,8 @@ import pokemon.dao.DaoArene;
 import pokemon.dao.DaoAreneJpaImpl;
 import pokemon.dao.DaoDresseur;
 import pokemon.dao.DaoDresseurJpaImpl;
+import pokemon.dao.DaoEquipement;
+import pokemon.dao.DaoEquipementJpaImpl;
 import pokemon.dao.DaoInfirmiere;
 import pokemon.dao.DaoInfirmiereJpaImpl;
 import pokemon.dao.DaoItem;
@@ -20,6 +22,11 @@ public class Context {
 	private static DaoDresseur daoDresseur = new DaoDresseurJpaImpl();
 	private static DaoInfirmiere daoInfirmire = new DaoInfirmiereJpaImpl();
 	private static DaoItem daoItem = new DaoItemJpaImpl();
+	private static DaoEquipement daoEquipement = new DaoEquipementJpaImpl();
+
+	public static DaoEquipement getDaoEquipement() {
+		return daoEquipement;
+	}
 
 	public static DaoItem getDaoItem() {
 		return daoItem;
