@@ -32,7 +32,8 @@ import javax.persistence.Transient;
 public abstract class Personne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPersonne")
-	//@SequenceGenerator(name = "seqPersonne", sequenceName = "seq_person", initialValue = 100, allocationSize = 1)
+	// @SequenceGenerator(name = "seqPersonne", sequenceName = "seq_person",
+	// initialValue = 100, allocationSize = 1)
 	@Column(name = "id")
 	private Long id;
 	@Column(name = "first_name", nullable = false, length = 200)
@@ -55,6 +56,12 @@ public abstract class Personne {
 
 	public Personne() {
 
+	}
+
+	public Personne(String prenom, String nom) {
+		super();
+		this.prenom = prenom;
+		this.nom = nom;
 	}
 
 	public Long getId() {
