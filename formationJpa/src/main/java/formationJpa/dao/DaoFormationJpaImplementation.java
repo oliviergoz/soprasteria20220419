@@ -6,32 +6,30 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import formationJpa.entity.Formateur;
+import formationJpa.entity.Formation;
 import formationJpa.util.Context;
 
-public class DaoFormateurJpaImplementation implements DaoFormateur {
+public class DaoFormationJpaImplementation implements DaoFormation {
 
 	@Override
-	public Formateur findById(Long id) {
+	public Formation findById(Long id) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		Formateur p = em.find(Formateur.class, id);
-//		System.out.println("----avant getFormation----");
-//		System.out.println(p.getFormations());
+		Formation p = em.find(Formation.class, id);
 		em.close();
 		return p;
 	}
 
 	@Override
-	public List<Formateur> findAll() {
+	public List<Formation> findAll() {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Formateur> query = em.createQuery("select p from Formateur p", Formateur.class);
-		List<Formateur> formateurs = query.getResultList();
+		TypedQuery<Formation> query = em.createQuery("select p from Formation p", Formation.class);
+		List<Formation> formations = query.getResultList();
 		em.close();
-		return formateurs;
+		return formations;
 	}
 
 	@Override
-	public void insert(Formateur obj) {
+	public void insert(Formation obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -41,7 +39,7 @@ public class DaoFormateurJpaImplementation implements DaoFormateur {
 	}
 
 	@Override
-	public Formateur update(Formateur obj) {
+	public Formation update(Formation obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -56,13 +54,13 @@ public class DaoFormateurJpaImplementation implements DaoFormateur {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.remove(em.find(Formateur.class, id));
+		em.remove(em.find(Formation.class, id));
 		tx.commit();
 		em.close();
 	}
 
 	@Override
-	public void delete(Formateur obj) {
+	public void delete(Formation obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();

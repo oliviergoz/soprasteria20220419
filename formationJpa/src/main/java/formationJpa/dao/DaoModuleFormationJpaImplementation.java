@@ -6,32 +6,32 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import formationJpa.entity.Formateur;
+import formationJpa.entity.ModuleFormation;
+import formationJpa.entity.ModuleFormationId;
+import formationJpa.entity.Ordinateur;
 import formationJpa.util.Context;
 
-public class DaoFormateurJpaImplementation implements DaoFormateur {
+public class DaoModuleFormationJpaImplementation implements DaoModuleFormation {
 
 	@Override
-	public Formateur findById(Long id) {
+	public ModuleFormation findById(ModuleFormationId id) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		Formateur p = em.find(Formateur.class, id);
-//		System.out.println("----avant getFormation----");
-//		System.out.println(p.getFormations());
+		ModuleFormation p = em.find(ModuleFormation.class, id);
 		em.close();
 		return p;
 	}
 
 	@Override
-	public List<Formateur> findAll() {
+	public List<ModuleFormation> findAll() {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Formateur> query = em.createQuery("select p from Formateur p", Formateur.class);
-		List<Formateur> formateurs = query.getResultList();
+		TypedQuery<ModuleFormation> query = em.createQuery("select p from ModuleFormation p", ModuleFormation.class);
+		List<ModuleFormation> moduleFormation = query.getResultList();
 		em.close();
-		return formateurs;
+		return moduleFormation;
 	}
 
 	@Override
-	public void insert(Formateur obj) {
+	public void insert(ModuleFormation obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -41,7 +41,7 @@ public class DaoFormateurJpaImplementation implements DaoFormateur {
 	}
 
 	@Override
-	public Formateur update(Formateur obj) {
+	public ModuleFormation update(ModuleFormation obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -52,17 +52,17 @@ public class DaoFormateurJpaImplementation implements DaoFormateur {
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(ModuleFormationId id) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.remove(em.find(Formateur.class, id));
+		em.remove(em.find(ModuleFormation.class, id));
 		tx.commit();
 		em.close();
 	}
 
 	@Override
-	public void delete(Formateur obj) {
+	public void delete(ModuleFormation obj) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
