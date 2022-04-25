@@ -7,8 +7,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "dresseur")
 public class Dresseur extends Personne {
@@ -21,6 +19,8 @@ public class Dresseur extends Personne {
 	private Arene arene;
 	@OneToMany(mappedBy = "key.dresseur")
 	private Set<Equipement> sac;
+	@OneToMany(mappedBy = "dresseur")
+	private Set<Pokemon> pokemon;
 
 //	//version on est sbire que d'une arene
 //	@ManyToOne
@@ -45,6 +45,30 @@ public class Dresseur extends Personne {
 
 	public void setBadge(int badge) {
 		this.badge = badge;
+	}
+
+	public Arene getArene() {
+		return arene;
+	}
+
+	public void setArene(Arene arene) {
+		this.arene = arene;
+	}
+
+	public Set<Equipement> getSac() {
+		return sac;
+	}
+
+	public void setSac(Set<Equipement> sac) {
+		this.sac = sac;
+	}
+
+	public Set<Pokemon> getPokemon() {
+		return pokemon;
+	}
+
+	public void setPokemon(Set<Pokemon> pokemon) {
+		this.pokemon = pokemon;
 	}
 
 }
