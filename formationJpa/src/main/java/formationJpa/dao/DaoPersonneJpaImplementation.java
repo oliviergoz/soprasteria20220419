@@ -4,10 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 
 import formationJpa.entity.Personne;
-import formationJpa.entity.Stagiaire;
 import formationJpa.util.Context;
 
 public class DaoPersonneJpaImplementation implements DaoPersonne {
@@ -27,7 +26,7 @@ public class DaoPersonneJpaImplementation implements DaoPersonne {
 		// meme synthaxe sql
 		// select from where join group by
 		// travaille sur des objets(entity)
-//		Query query = em.createQuery("select p from Personne p");
+		//Query query = em.createQuery("select p from Personne p");
 		TypedQuery<Personne> query = em.createQuery("select p from Personne p", Personne.class);
 		List<Personne> personnes = query.getResultList();
 		em.close();

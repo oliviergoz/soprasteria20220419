@@ -20,7 +20,7 @@ public class Dresseur extends Personne {
 	@OneToMany(mappedBy = "key.dresseur")
 	private Set<Equipement> sac;
 	@OneToMany(mappedBy = "dresseur")
-	private Set<Pokemon> pokemon;
+	private Set<Pokemon> pokemons;
 
 //	//version on est sbire que d'une arene
 //	@ManyToOne
@@ -63,12 +63,12 @@ public class Dresseur extends Personne {
 		this.sac = sac;
 	}
 
-	public Set<Pokemon> getPokemon() {
-		return pokemon;
+	public Set<Pokemon> getPokemons() {
+		return pokemons;
 	}
 
-	public void setPokemon(Set<Pokemon> pokemon) {
-		this.pokemon = pokemon;
+	public void setPokemons(Set<Pokemon> pokemons) {
+		this.pokemons = pokemons;
 	}
 
 }

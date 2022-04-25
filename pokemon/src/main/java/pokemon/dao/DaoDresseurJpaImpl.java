@@ -12,6 +12,55 @@ import pokemon.util.Context;
 public class DaoDresseurJpaImpl implements DaoDresseur {
 
 	@Override
+	public List<Dresseur> findAllWithPokemonHaving3pp() {
+		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
+		// @formatter:off
+		TypedQuery<Dresseur> query = em.createQuery("select d from Dresseur d "
+													+ "left join fetch d.pokemons as p "
+													+ "left join fetch p.moveSet as ms"
+													+ "where ms.pp>3", Dresseur.class);
+
+		// @formatter:on
+		List<Dresseur> dresseurs = query.getResultList();
+		em.close();
+		return dresseurs;
+	}
+
+	@Override
+	public Dresseur findByIdWithPokemonAndSac(Integer id) {
+		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
+		TypedQuery<Dresseur> query = em.createQuery(
+				"select d from Dresseur d left join fetch d.pokemons left join fetch d.sac where d.id=:id",
+				Dresseur.class);
+		query.setParameter("id", id);
+		Dresseur dresseur = query.getSingleResult();
+		em.close();
+		return dresseur;
+	}
+
+	@Override
+	public Dresseur findByIdWithPokemon(Integer id) {
+		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
+		TypedQuery<Dresseur> query = em
+				.createQuery("select d from Dresseur d left join fetch d.pokemons where d.id=:id", Dresseur.class);
+		query.setParameter("id", id);
+		Dresseur dresseur = query.getSingleResult();
+		em.close();
+		return dresseur;
+	}
+
+	@Override
+	public Dresseur findByIdWithSac(Integer id) {
+		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
+		TypedQuery<Dresseur> query = em.createQuery("select d from Dresseur d left join fetch d.sac where d.id=:id",
+				Dresseur.class);
+		query.setParameter("id", id);
+		Dresseur dresseur = query.getSingleResult();
+		em.close();
+		return dresseur;
+	}
+
+	@Override
 	public Dresseur findById(Integer id) {
 		EntityManager em = Context.getEntityManagerFactory().createEntityManager();
 		Dresseur dresseur = em.find(Dresseur.class, id);
