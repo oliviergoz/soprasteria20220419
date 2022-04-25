@@ -1,26 +1,15 @@
 package formationJpa;
 
-import java.time.LocalDate;
-import java.time.Month;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import formationJpa.dao.DaoFormateur;
 import formationJpa.dao.DaoFormation;
-import formationJpa.dao.DaoModule;
-import formationJpa.dao.DaoModuleFormation;
-import formationJpa.dao.DaoOrdinateur;
-import formationJpa.dao.DaoPersonne;
 import formationJpa.dao.DaoStagiaire;
-import formationJpa.entity.Adresse;
-import formationJpa.entity.Civilite;
 import formationJpa.entity.Formateur;
 import formationJpa.entity.Formation;
-import formationJpa.entity.Module;
-import formationJpa.entity.ModuleFormation;
-import formationJpa.entity.ModuleFormationId;
-import formationJpa.entity.Ordinateur;
-import formationJpa.entity.Personne;
 import formationJpa.entity.Stagiaire;
 import formationJpa.util.Context;
 
@@ -32,34 +21,40 @@ public class PersistenceTest {
 
 		DaoFormateur daoFormateur = Context.getDaoFormateur();
 		daoFormateur.insert(olivier);
-		olivier.setNom("gozlan");
-		olivier=daoFormateur.update(olivier);
-		olivier.setCivilite(Civilite.M);
-		olivier=daoFormateur.update(olivier);
-		olivier.setExperience(10);
-		olivier=daoFormateur.update(olivier);
 
-//
-//		Formation formation = new Formation();
-//		formation.setNom("java");
-//		formation.setReferent(olivier);
-//
-//		DaoFormation daoFormation = Context.getDaoFormation();
-//		daoFormation.insert(formation);
-//
-//		Stagiaire hamza = new Stagiaire("hamza", "M");
-//		Stagiaire fabien = new Stagiaire("fabien", null);
-//		DaoStagiaire daoStagiaire = Context.getDaoStagiaire();
-//		daoStagiaire.insert(fabien);
-//		daoStagiaire.insert(hamza);
-//
+		Formation formation = new Formation();
+		formation.setNom("java");
+		formation.setReferent(olivier);
+
+		DaoFormation daoFormation = Context.getDaoFormation();
+		daoFormation.insert(formation);
+
+		Stagiaire hamza = new Stagiaire("hamza", "M");
+		Stagiaire fabien = new Stagiaire("fabien", null);
+		DaoStagiaire daoStagiaire = Context.getDaoStagiaire();
+		daoStagiaire.insert(fabien);
+		daoStagiaire.insert(hamza);
+
 //		Set<Stagiaire> participants = new HashSet<Stagiaire>();
 //		participants.add(fabien);
 //		participants.add(hamza);
-//
-//		formation.setParticipants(participants);
-//		daoFormation.update(formation);
-//
+
+		Set<Stagiaire> participants = Arrays.asList(fabien, hamza).stream().collect(Collectors.toSet());
+
+		formation.setParticipants(participants);
+		daoFormation.update(formation);
+
+		formation = daoFormation.findByIdWithModulesAndParticipants(formation.getId());
+		// dead depuis java 8
+//		for (Stagiaire s : formation.getParticipants()) {
+//			System.out.println(s);
+//		}
+
+		// formation.getParticipants().stream().forEach(System.out::println);
+		formation.getParticipants().forEach(participant -> {
+			System.out.println(participant.getPrenom() + " " + participant.getNom());
+		});
+
 //		participants.remove(fabien);
 //		daoFormation.update(formation);
 //

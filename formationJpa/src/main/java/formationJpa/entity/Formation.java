@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +26,10 @@ public class Formation {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqFormation")
 	private Long id;
 	private String nom;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "referent_id", foreignKey = @ForeignKey(name = "FORMATION_REFERENT_ID_FK"))
 	private Formateur referent;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "participant", joinColumns = @JoinColumn(name = "formation_id", foreignKey = @ForeignKey(name = "PARTICIPANT_FORMATION_ID_FK")), inverseJoinColumns = @JoinColumn(name = "participant_id", foreignKey = @ForeignKey(name = "PARTICIPANT_PARTICIPANT_ID_FK")))
 	private Set<Stagiaire> participants;
 	@OneToMany(mappedBy = "key.formation")
