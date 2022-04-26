@@ -11,13 +11,7 @@ public class App {
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ctx=new AnnotationConfigApplicationContext(AppConfig.class);
-		
-		System.out.println(ctx);
-
-		// Personne personne=new Personne();
-		IPersonne personne = ctx.getBean("personne", IPersonne.class);
-		System.out.println(personne.getAdresse());
-		
+		ctx.getBeanFactory().createBean(AppSpring.class).run();	
 		ctx.close();
 	}
 

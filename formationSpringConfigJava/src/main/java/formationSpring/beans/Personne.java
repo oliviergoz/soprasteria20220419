@@ -4,14 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import formationSpring.aspects.MonAspect;
+
 @Component
-public class Personne implements IPersonne{
+public class Personne implements IPersonne {
 
 	private String nom;
 	@Autowired
-	//@Qualifier("ajc")
+	@Qualifier("ajc")
 	private Adresse adresse;
-	
+
 	public Personne() {
 		System.out.println("construction d'une personne");
 	}
@@ -31,6 +33,10 @@ public class Personne implements IPersonne{
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	
-	
+
+	public String methodePourAspect() {
+		//throw new IllegalArgumentException();
+		 return "dans la methode pour demo Aspect";
+	}
+
 }
