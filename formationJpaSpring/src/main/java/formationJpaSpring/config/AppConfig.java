@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = "formationJpaSpring.dao")
+@ComponentScan(basePackages = {"formationJpaSpring.dao","formationJpaSpring.services"})
 @EnableJpaRepositories(basePackages = "formationJpaSpring.repository")
 public class AppConfig {
 

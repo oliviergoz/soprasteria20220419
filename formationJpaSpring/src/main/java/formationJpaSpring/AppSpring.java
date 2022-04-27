@@ -13,8 +13,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import formationJpaSpring.dao.DaoFormation;
+import formationJpaSpring.entity.Formateur;
 import formationJpaSpring.entity.Formation;
+import formationJpaSpring.repository.FormateurRepository;
 import formationJpaSpring.repository.FormationRepository;
+import formationJpaSpring.services.FormateurService;
 
 public class AppSpring {
 
@@ -23,6 +26,9 @@ public class AppSpring {
 
 	@Autowired
 	private FormationRepository formationRepo;
+
+	@Autowired
+	private FormateurService formateurService;
 
 	public void run(String... args) {
 
@@ -51,26 +57,37 @@ public class AppSpring {
 //			System.out.println(f.getNom());
 //		});
 
-		List<Formation> formations = Arrays.asList(new Formation("java"), new Formation("html"),
-				new Formation("javascript"), new Formation("css"), new Formation("unix"), new Formation("scrum"));
-
-		formationRepo.saveAll(formations);
-
-		Pageable page1Avec3Elements = PageRequest.of(0, 4, Sort.by("nom").descending());
-		Page<Formation> page = formationRepo.findAll(page1Avec3Elements);
-		System.out.println(page);
-		page.get().forEach(f -> {
-			System.out.println(f.getNom());
-		});
-
-		page = formationRepo.findAll(page.nextOrLastPageable());
-		page.get().forEach(f -> {
-			System.out.println(f.getNom());
-		});
+//		List<Formation> formations = Arrays.asList(new Formation("java"), new Formation("html"),
+//				new Formation("javascript"), new Formation("css"), new Formation("unix"), new Formation("scrum"));
+//
+//		formationRepo.saveAll(formations);
+//
+//		Pageable page1Avec3Elements = PageRequest.of(0, 4, Sort.by("nom").descending());
+//		Page<Formation> page = formationRepo.findAll(page1Avec3Elements);
+//		System.out.println(page);
+//		page.get().forEach(f -> {
+//			System.out.println(f.getNom());
+//		});
 //
 //		page = formationRepo.findAll(page.nextOrLastPageable());
 //		page.get().forEach(f -> {
 //			System.out.println(f.getNom());
 //		});
+//
+//		page = formationRepo.findAll(page.nextOrLastPageable());
+//		page.get().forEach(f -> {
+//			System.out.println(f.getNom());
+//		});
+
+		Formateur formateur = new Formateur();
+		formateur.setPrenom("olivier");
+		formateurService.create(formateur);
+
+		System.out.println(formateurService.getById(formateur.getId()));
+
+//		Formation formation = new Formation("java");
+//		formation.setReferent(formateur);
+//		formationRepo.save(formation);
+
 	}
 }
