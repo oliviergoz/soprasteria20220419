@@ -39,6 +39,11 @@ public class Formation {
 
 	}
 
+	public Formation(String nom) {
+		super();
+		this.nom = nom;
+	}
+
 	public Long getId() {
 		return id;
 	}
