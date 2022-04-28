@@ -46,8 +46,17 @@ public class PokemonAppSpring {
 		// areneService.delete(arene);
 
 		dresseurService.delete(m1);
-		
-		dresseurService.delete(s2);
 
+		dresseurService.deleteById(s2.getId());
+
+		Dresseur s3 = new Dresseur();
+		s3.setNom("sbire3");
+
+		dresseurService.create(s3);
+
+		Dresseur sbirePartiel = new Dresseur();
+		sbirePartiel.setId(s3.getId());
+
+		areneService.addSbire(arene, sbirePartiel);
 	}
 }

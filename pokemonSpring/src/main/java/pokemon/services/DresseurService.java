@@ -61,6 +61,8 @@ public class DresseurService {
 	}
 
 	public void deleteById(Integer id) {
-
+		Dresseur dresseur = new Dresseur();
+		dresseur.setId(id);
+		delete(dresseur);
 	}
 }
