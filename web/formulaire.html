@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<div style="display: inline-block;">div1</div>
+		<div style="display: inline-block;">div2</div>
+	</div>
+	<div>
+		<fieldset>
+			<legend>mon formulaire</legend>
+			<form action="" method="post">
+				<input type="hidden" name="hidden" value="hidden">
+				<fieldset>
+				<legend>infos standards</legend>
+				<div>
+					<label for="prenom">prenom:</label><input type="text" id="prenom"
+						name="prenom" placeholder="saisir votre prenom">
+				</div>
+				<div>
+					<label for="dtNaiss">date de naissance:</label><input type="date"
+						id="dtNaiss" name="dtNaiss">
+				</div>
+				
+				<div>
+					<label for="mail">mail:</label><input type="email" id="mail"
+						name="mail">
+				</div>
+				</fieldset>
+				<fieldset>
+				<legend>les trucs a cocher</legend>
+				<div>
+					<label for="check">une checkbox:</label><input type="checkbox"
+						id="check" name="check" value="check">
+				</div>
+				<div>
+					sexe:<br> <label for="homme">homme:</label><input type="radio"
+						id="homme" name="sexe" value="homme" checked="checked"> <label
+						for="femme">femme:</label><input type="radio" id="femme"
+						name="sexe" value="femme">
+				</div>
+				</fieldset>
+				<div>
+					<textarea name="textearea" rows="5" cols="150"></textarea>
+				</div>
+				<div>
+					<select name="select">
+						<option value="black">texte qui apparait</option>
+						<option value="red">rouge</option>
+						<option value="yellow">jaune</option>
+					</select>
+				</div>
+				<div>
+					<select name="list" size="2" multiple="multiple">
+						<option value="black">texte qui apparait</option>
+						<option value="red">rouge</option>
+						<option value="yellow">jaune</option>
+					</select>
+				</div>
+				<div>
+					<button type="submit">envoyer</button>
+				</div>
+			</form>
+		</fieldset>
+	</div>
+</body>
+</html>
