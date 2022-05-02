@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+div {
+	background-color: pink;
+	text-align: center;
+	width: 400px
+}
+
+.rouge {
+	background-color: red;
+	height: 200px
+}
+
+#identifiant {
+	background-color: gray;
+}
+
+.texteBlanc {
+	color: white;
+}
+
+div a {
+	background-color: green;
+}
+
+div>a {
+	background-color: yellow;
+}
+
+a:hover {
+	color: white;
+}
+
+div>p:first-child {
+	background-color: fuchsia;
+}
+
+input[type="text"]:focus {
+	
+}
+
+input[type="checkbox"]+label {
+	
+}
+
+.arrondi {
+	border-radius: 10px;
+}
+
+p.rouge.arrondi {
+	
+}

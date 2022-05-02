@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="container">
+	<div>
+		<h1 style="background-color: red">bootstrap</h1>
+		<div class="row">
+			<!-- ligne de 12 cases -->
+			<div class="col-3 bg-dark">div1</div>
+			<div class="col-6 bg-primary">div2</div>
+			<div class="col-3 bg-dark">div2</div>
+			<div class="col bg-success">div sur 1 ligne</div>
+		</div>
+		<h2 class="d-none d-md-block">version responsive</h2>
+		<div class="row">
+			<!-- ligne de 12 cases -->
+			<div class="bg-danger col-lg-12 d-none d-lg-block">div en lg</div>
+			<div class="col-md-2 col-lg-6 bg-dark">div1</div>
+			<div class="col-md-6 offset-md-1 col-lg-6 bg-primary">div2</div>
+			<div class="col-md-2 offset-md-1 col-lg-12 bg-dark">div2</div>
+			<div class="col-12 bg-success">div sur 1 ligne</div>
+		</div>
+	</div>
+</body>
+</html>
