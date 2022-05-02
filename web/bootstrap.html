@@ -3,12 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body class="container">
 	<div>
 		<h1 style="background-color: red">bootstrap</h1>
+		<h2>exercice placement</h2>
+		<div class="row">
+			<header class="col-12 bg-primary">HEADER</header>
+			<nav class="col-12 bg-secondary">MENU</nav>
+			<section class="col-12 bg-success">
+				<div class="row">
+					<aside class="col-md-1 offset-md-1 bg-primary">gauche</aside>
+<!-- 					<div class="col-md-8"> -->
+<!-- 						<div class="row"> -->
+<!-- 						<article class="col-xl-6">article 1</article> -->
+<!-- 						<article class="col-xl-6">article 2</article> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					<article class="col-md-4">article1</article>
+					<article class="col-md-4">article2</article>
+					<aside class="col-md-12 col-lg-1 d-none d-md-block bg-primary">droite</aside>
+				</div>
+			</section>
+			<footer class="col-12 bg-info">FOOTER</footer>
+
+		</div>
+
+		<br>
+		<hr>
+		<br>
+
 		<div class="row">
 			<!-- ligne de 12 cases -->
 			<div class="col-3 bg-dark">div1</div>
