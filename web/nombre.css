@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+
+.cache{
+	visibility: hidden;
+}
+
+.visible{
+	visibility: visible;
+}

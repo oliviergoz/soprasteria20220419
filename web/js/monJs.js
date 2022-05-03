@@ -28,6 +28,7 @@ console.error('Error');
 
 console.log('5'==5);
 console.log('5'===5);
+
 //
 //function demoCallBack(param, fonction) {
 //	fonction(param);

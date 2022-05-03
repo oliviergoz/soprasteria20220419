@@ -43,6 +43,20 @@ demoCallBack('julie', console.log);*/
 //});
 
 // --- Exo cours
+
+//let id=setTimeout(()=>{
+//	alert('mon alert');
+//},5000);
+//
+//clearTimeout(id);
+
+let id=setInterval((param)=>{
+	console.log('log...'+param)
+},2000,'olivier');
+
+//clearInterval(id);
+
+
 function getTypeClient(nombre, fct) {
 	if (nombre < 0) {
 		fct("nombre invalide");
@@ -58,6 +72,7 @@ function getTypeClient(nombre, fct) {
 }
 
 let tab = [100, 1000, 5000, 3000];
+
 
 tab.forEach(function(contenu, indice) {
 	console.log(contenu);
@@ -75,6 +90,7 @@ tab.forEach((contenu, indice) => {
 	});
 });
 
+
 //var bouton= document.getElementById("bouton");
 
 // getTypeClient(100, function(text){
@@ -90,7 +106,10 @@ tab.forEach((contenu, indice) => {
 //     console.log(text);
 // });
 
+let variable=10;
+
 function changementNomBouton(nom) {
+	alert(variable);
 	let bouton = document.querySelector("#bouton");
 	console.log(bouton);
 	bouton.innerHTML = nom;
@@ -105,7 +124,7 @@ function changementNomBouton(nom) {
 		console.log(typeClient);
 		let input = document.querySelector("#copie");
 		input.value = typeClient;
-	})
+	});
 }
 
 function maFonction(param) {
