@@ -45,29 +45,49 @@ demoCallBack('julie', console.log);*/
 
 // --- Exo cours
 function getTypeClient(nombre, fct){
-    if (nombre >= 0 && nombre <= 200) {
+    if(nombre<0){
+        fct('nombre invalide');
+   } else if ( nombre <= 200) {
         fct('Petit client');
     } else if (nombre <= 2000){
         fct('Client');
     } else if (nombre <= 10000){
         fct('Client à potentiel');
-    } else if (nombre > 10000){
-        fct('Client à Grand Compte');
     } else {
-        fct('nombre invalide');
-    }
+        fct('Client à Grand Compte');
+    } 
 }
 
-getTypeClient(100, function(text){
-    console.log(text);
+
+let tab=[100,1000,5000,3000];
+
+
+tab.forEach(function(contenu,indice){
+    console.log(contenu);
+    console.log(indice);
+    getTypeClient(contenu, function(text){
+        console.log(text);
+    });
 });
-getTypeClient(1000, function(text){
-    console.log(text);
+
+tab.forEach(function(contenu,indice){
+    console.log(contenu);
+    console.log(indice);
+    getTypeClient(contenu, function(text){
+        console.log(text);
+    });
 });
-getTypeClient(5000, function(text){
-    console.log(text);
-});
-getTypeClient(300000, function(text){
-    console.log(text);
-});
+
+// getTypeClient(100, function(text){
+//     console.log(text);
+// });
+// getTypeClient(1000, function(text){
+//     console.log(text);
+// });
+// getTypeClient(5000, function(text){
+//     console.log(text);
+// });
+// getTypeClient(300000, function(text){
+//     console.log(text);
+// });
 
