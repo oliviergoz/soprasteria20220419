@@ -50,9 +50,18 @@ demoCallBack('julie', console.log);*/
 //
 //clearTimeout(id);
 
-let id=setInterval((param)=>{
-	console.log('log...'+param)
-},2000,'olivier');
+
+
+
+let obj = {
+	prenom: 'olivier',
+	nom: 'gozlan',
+	adresse: { rue: 'chez olivier' }
+};
+
+//let id = setInterval((param) => {
+//	console.log('log...' + param)
+//}, 2000, 'olivier');
 
 //clearInterval(id);
 
@@ -106,7 +115,7 @@ tab.forEach((contenu, indice) => {
 //     console.log(text);
 // });
 
-let variable=10;
+let variable = 10;
 
 function changementNomBouton(nom) {
 	alert(variable);
@@ -132,4 +141,62 @@ function maFonction(param) {
 	console.log(param);
 	let input = document.querySelector("#copie");
 	input.value = param;
+}
+
+function demoCreateElement() {
+	let div = document.querySelector('#div1');
+	let nouvelleDiv = document.createElement('div');
+	nouvelleDiv.innerHTML = "contenu de la nouvelle";
+	div.appendChild(nouvelleDiv);
+	let autreDiv = document.createElement('div');
+	autreDiv.innerHTML = "<b>autre div</b>";
+	div.appendChild(autreDiv);
+
+	let p = document.createElement("p");
+	p.innerText = "du texte dans un p";
+	let divAvecP = document.createElement("div");
+	divAvecP.appendChild(p);
+	let button = document.createElement('button');
+	button.innerHTML = "nouveau bouton";
+	button.id = "newBouton";
+	//button.onclick = clickNouveauBouton;
+	//	button.addEventListener('click',(event)=>{
+	//		console.log(event);
+	//	})
+	button.addEventListener('click', clickNouveauBouton);
+	divAvecP.appendChild(button);
+	div.appendChild(divAvecP);
+
+
+
+	createUl();
+}
+
+
+function clickNouveauBouton(event) {
+	console.log(event);
+}
+
+let tableau = ['olivier', 'jordan'];
+
+function createUl() {
+
+	let ul = document.querySelector('#ul');
+	tableau.forEach((e, i) => {
+		let li = document.createElement('li');
+		li.innerText = e;
+		ul.appendChild(li);
+	});
+}
+
+
+
+
+function add() {
+	let formateur = document.querySelector('#formateur').value;
+	tableau.push(formateur);
+	let ul = document.querySelector('#ul');
+	let li = document.createElement('li');
+	li.innerText = formateur;
+	ul.appendChild(li);
 }
