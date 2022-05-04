@@ -47,8 +47,10 @@ function createTr(personne) {
 }
 
 function deletePersonne(event) {
+	console.log(personnes);
 	let tr = event.path[2];
 	let idPersonne = tr.id.substr(2);
+	console.log(idPersonne);
 	let i = 0;
 	while (personnes[i].id != idPersonne) {
 		i++;
@@ -83,6 +85,7 @@ function save() {
 	if (!error) {
 		let personne = { id: cpt, prenom: prenom.value, nom: nom.value };
 		createTr(personne);
+		personnes.push(personne);
 		clearForm();
 		hideForm();
 	}
