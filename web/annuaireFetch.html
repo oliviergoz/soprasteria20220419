@@ -18,26 +18,38 @@
 	<div class="container">
 		<table class="table">
 			<thead>
+				<th>id:</th>
 				<th>prenom:</th>
 				<th>nom:</th>
 			</thead>
 			<tbody id="tbody"></tbody>
 		</table>
-		<div><button  onclick="showForm()" class="btn btn-link">ajouter personne</button></div>
+		<div>
+			<button onclick="showForm()" class="btn btn-link">ajouter
+				personne</button>
+		</div>
 
 		<div id="divForm" style="width: 50%" class="d-none">
 			<form onsubmit="return false">
-				<input  type="hidden" id="id">
+				<div class="form-group">
+					<label for="id">id:</label> <input id="id" name="id"
+						placeholder="generation automatique" readonly="readonly"
+						class="form-control">
+					<div id="prenomErr" class="d-none alert alert-danger">prenom
+						obligatoire</div>
+				</div>
 				<div class="form-group">
 					<label for="prenom">prenom:</label> <input id="prenom"
 						name="prenom" placeholder="saisir votre prenom"
 						class="form-control">
-					<div id="prenomErr" class="d-none alert alert-danger">prenom obligatoire</div>
+					<div id="prenomErr" class="d-none alert alert-danger">prenom
+						obligatoire</div>
 				</div>
 				<div class="form-group">
 					<label for="nom">nom:</label> <input id="nom" name="nom"
 						placeholder="saisir votre nom" class="form-control">
-					<div  id="nomErr" class="d-none alert alert-danger">nom obligatoire</div>
+					<div id="nomErr" class="d-none alert alert-danger">nom
+						obligatoire</div>
 				</div>
 				<div>
 					<button class="btn btn-outline-primary" onclick="save()">enregistrer</button>
@@ -47,5 +59,5 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="./js/annuaire.js"></script>
+<script type="text/javascript" src="./js/annuaireAvecFetch.js"></script>
 </html>
