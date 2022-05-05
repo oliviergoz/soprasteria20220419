@@ -4,18 +4,24 @@
 
 
 let personnes = [{ id: 0, prenom: 'olivier', nom: 'gozlan' }, { id: 1, prenom: 'jordan', nom: 'abid' }, { id: 2, prenom: 'hamza', nom: 'T' }];
-let cpt = 0;
+let cpt = 3;
 initTable();
 
 function initTable() {
 	for (let p of personnes) {
-		createTr(p);
+		document.querySelector('#tbody').appendChild(createTr(p));
 	}
 }
 
 function createTr(personne) {
 	let tr = document.createElement('tr');
-	tr.setAttribute('id', `tr${cpt}`);
+	if (personne.id) {
+		tr.setAttribute('id', `tr${personne.id}`);
+	} else {
+		tr.setAttribute('id', `tr${cpt}`);
+		cpt++;
+	}
+
 	let tdPrenom = document.createElement('td');
 	tdPrenom.innerHTML = personne.prenom;
 	tr.appendChild(tdPrenom);
@@ -26,7 +32,14 @@ function createTr(personne) {
 	edit.innerHTML = "edition";
 	edit.className = "btn btn-outline-primary"
 	edit.addEventListener('click', (event) => {
-		console.log('click edition');
+		let tr = event.path[2];
+		let idPersonne = tr.id.substr(2);
+		let i = searchPersonne(idPersonne);
+		document.querySelector('#prenom').value = personnes[i].prenom;
+		document.querySelector('#nom').value = personnes[i].nom;
+		document.querySelector('#id').value = personnes[i].id;
+		//document.querySelector('#enregistrer').removeEventListener
+		showForm();
 	})
 
 	let tdEdit = document.createElement('td');
@@ -41,24 +54,16 @@ function createTr(personne) {
 	let tdDel = document.createElement('td');
 	tdDel.appendChild(del);
 	tr.appendChild(tdDel);
-	document.querySelector('#tbody').appendChild(tr);
-	cpt++;
-
+	return tr;
 }
 
 function deletePersonne(event) {
-	console.log(personnes);
 	let tr = event.path[2];
 	let idPersonne = tr.id.substr(2);
-	console.log(idPersonne);
-	let i = 0;
-	while (personnes[i].id != idPersonne) {
-		i++;
-	}
+	let i = searchPersonne(idPersonne);
 	personnes.splice(i, 1);
 	let tbody = event.path[3];
 	tbody.removeChild(tr);
-	console.log(personnes);
 }
 
 function showForm() {
@@ -68,29 +73,55 @@ function showForm() {
 function save() {
 	let inputPrenom = document.querySelector('#prenom');
 	let inputNom = document.querySelector('#nom');
+	let inputId = document.querySelector('#id');
 	let error = false;
-	if (!prenom.value) {
+	if (!inputPrenom.value) {
 		console.log('prenom')
 		show(document.querySelector('#prenomErr'));
 		error = true;
 	} else {
 		hide(document.querySelector('#prenomErr'));
 	}
-	if (!nom.value) {
+	if (!inputNom.value) {
 		show(document.querySelector('#nomErr'));
 		error = true;
 	} else {
 		hide(document.querySelector('#nomErr'));
 	}
 	if (!error) {
-		let personne = { id: cpt, prenom: prenom.value, nom: nom.value };
-		createTr(personne);
-		personnes.push(personne);
+		if (inputId.value) {
+			//update
+			let idPersonne = inputId.value;
+			let i = searchPersonne(idPersonne);
+			personnes[i].prenom = inputPrenom.value;
+			personnes[i].nom = inputNom.value;
+			let trARemplacer = document.querySelector(`#tr${idPersonne}`);
+			let nouveauTr = createTr(personnes[i]);
+			document.querySelector('#tbody').replaceChild(nouveauTr, trARemplacer);
+
+		} else {
+			//creation
+			let personne = { id: cpt, prenom: inputPrenom.value, nom: inputNom.value };
+			document.querySelector('#tbody').appendChild(createTr(personne));
+			personnes.push(personne);
+		}
 		clearForm();
 		hideForm();
 	}
 
 
+}
+
+function searchPersonne(idRecherche) {
+	let i = 0;
+	while (personnes[i].id != idRecherche) {
+		i++;
+	}
+	return i;
+}
+
+function cancleSubmit() {
+	return false;
 }
 
 function cancel() {
@@ -101,6 +132,8 @@ function cancel() {
 function clearForm() {
 	let inputPrenom = document.querySelector('#prenom');
 	let inputNom = document.querySelector('#nom');
+	let inputId = document.querySelector('#id');
+	inputId.value = '';
 	inputNom.value = '';
 	inputPrenom.value = '';
 
