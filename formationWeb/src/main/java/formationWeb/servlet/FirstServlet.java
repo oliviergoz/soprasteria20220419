@@ -29,7 +29,11 @@ public class FirstServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String prenom = request.getParameter("prenom");
-		response.getWriter().append("bonjour " + prenom );
+		if (prenom.equals("olivier")) {
+			response.getWriter().append("bonjour " + prenom.toUpperCase());
+		}else {
+			response.getWriter().append("au revoir");
+		}
 	}
 
 	/**
