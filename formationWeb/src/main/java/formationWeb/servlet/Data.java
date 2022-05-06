@@ -1,24 +1,27 @@
 package formationWeb.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class FirstServlet
+ * Servlet implementation class Data
  */
-@WebServlet("/FirstServlet")
-public class FirstServlet extends HttpServlet {
+@WebServlet("/Data")
+public class Data extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public FirstServlet() {
+	public Data() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -29,18 +32,26 @@ public class FirstServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// parametre
+		// recevoir des donnees du client via la requete
+		request.getParameter("nomParametre");
 
-		Cookie[] cookies = request.getCookies();
-		for (Cookie c : cookies) {
-			System.out.println(c.getName() + " " + c.getValue() + " " + c.getMaxAge());
-		}
+		// Attributs de la requete
 
-		String prenom = request.getParameter("prenom");
-		if (prenom.equals("olivier")) {
-			response.getWriter().append("bonjour " + prenom.toUpperCase());
-		} else {
-			response.getWriter().append("au revoir");
-		}
+		// Session
+		HttpSession session = request.getSession();
+		session.setAttribute("monAttributEnSession", "un text dans la session");
+
+		// ServletContext (variable d'application)
+		ServletContext ctx = request.getServletContext();
+		ctx.setAttribute("application1", "un texte dans le servletContext");
+
+		//Cookie
+		Cookie cookie=new Cookie("hello", "hello_world");
+		cookie.setMaxAge(3600*24);
+		
+		response.addCookie(cookie);
+		
 	}
 
 	/**

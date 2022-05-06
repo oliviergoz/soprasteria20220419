@@ -17,7 +17,11 @@
 	for (int i = 0; i < 5; i++) {
 		out.write("write dans scriptlet");
 	%>
-	<div>hello <%=i%> <a href="unePageQuiDevraExister?param=<%=i%>">un lien</a></div>
+	<div>
+		hello
+		<%=i%>
+		<a href="unePageQuiDevraExister?param=<%=i%>">un lien</a>
+	</div>
 	<%
 	}
 	%>

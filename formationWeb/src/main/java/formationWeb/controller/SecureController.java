@@ -1,24 +1,24 @@
-package formationWeb.servlet;
+package formationWeb.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class FirstServlet
+ * Servlet implementation class SecureController
  */
-@WebServlet("/FirstServlet")
-public class FirstServlet extends HttpServlet {
+@WebServlet("/secure")
+public class SecureController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public FirstServlet() {
+	public SecureController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -30,17 +30,16 @@ public class FirstServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Cookie[] cookies = request.getCookies();
-		for (Cookie c : cookies) {
-			System.out.println(c.getName() + " " + c.getValue() + " " + c.getMaxAge());
-		}
+		String view = null;
 
-		String prenom = request.getParameter("prenom");
-		if (prenom.equals("olivier")) {
-			response.getWriter().append("bonjour " + prenom.toUpperCase());
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login") != null) {
+			view = "WEB-INF/secure.jsp";
 		} else {
-			response.getWriter().append("au revoir");
+			view = "WEB-INF/login.jsp";
+			request.setAttribute("erreur", "il faut d'abord se connecter");
 		}
+		request.getRequestDispatcher(view).forward(request, response);
 	}
 
 	/**
