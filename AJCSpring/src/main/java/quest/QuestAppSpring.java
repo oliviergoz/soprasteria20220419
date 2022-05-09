@@ -38,7 +38,7 @@ public class QuestAppSpring {
 	public void init() 
 	{
 		Formateur f = new Formateur("Jordan","jordan", "Abid", "Jordan");
-		Formateur f2 = new Formateur("Olivé","tom", "Gozlan", "Olivier");
+		Formateur f2 = new Formateur("Olivï¿½","tom", "Gozlan", "Olivier");
 		
 		
 		compteService.create(f);
@@ -97,7 +97,7 @@ public class QuestAppSpring {
 		
 		
 		
-		Evaluation e1 = new Evaluation(99,"J'aurais donné 100 s'il avait fait de la magie !" , mod1, s6);
+		Evaluation e1 = new Evaluation(99,"J'aurais donnï¿½ 100 s'il avait fait de la magie !" , mod1, s6);
 		
 		evaluationService.create(e1);
 		
@@ -106,31 +106,10 @@ public class QuestAppSpring {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public void run(String... args) {
+		init();
 			
-	/*	String login = "Olivé";
+	/*	String login = "Olivï¿½";
 		String password="tom";
 		
 		
