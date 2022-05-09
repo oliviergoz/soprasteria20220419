@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import quest.config.QuestConfig;
+import quest.entity.Matiere;
 import quest.services.MatiereService;
 
 /**
@@ -20,20 +21,14 @@ import quest.services.MatiereService;
  */
 @WebServlet("/matiere")
 public class MatiereController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public MatiereController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
+	//findAll (doGet avec aucun param)
+	//findById (doGet avec param id + q=find)
+	//delete (doGet avec param id + q=delete)
+	//insert (doPost avec params + q=insert)
+	//update (doPost avec params matiere + q=update)
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MatiereService matiereService = null;
@@ -42,14 +37,21 @@ public class MatiereController extends HttpServlet {
 				.getAttribute("ctxSpring");
 		matiereService = ctx.getBean(MatiereService.class);
 		RequestDispatcher rd = null;
+		
+		
 		String query = request.getParameter("q");
+		//Si on a pas de query => findAll + redriect vers la page list
+		
 		if (query == null || query.isEmpty()) {
 			rd = list(request, response, matiereService);
-		} else if (query.equals("delete")) {
+		} 
+		
+		//Query = delete => delete + redirect vers la page list
+		else if (query.equals("delete")) {
 			rd = delete(request, response, matiereService);
-		}else if(query.equals("add")) {
-			
-		}else if(query.equals("edit")) {
+		}
+		//Query =edit => charger la matiere a edit + redirect vers la page d'edition	
+		else if(query.equals("edit")) {
 			rd=edit(request, response, matiereService);
 		}
 		rd.forward(request, response);
@@ -75,14 +77,49 @@ public class MatiereController extends HttpServlet {
 		return list(request, response, matiereService);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
+
+	RequestDispatcher insert(HttpServletRequest request, HttpServletResponse response, MatiereService matiereService) {
+		String libelle = request.getParameter("libelle");
+		matiereService.create(new Matiere(libelle));
+		return list(request, response, matiereService);
+	}
+
+	
+	
+	RequestDispatcher update(HttpServletRequest request, HttpServletResponse response, MatiereService matiereService) {
+		Long id = Long.parseLong(request.getParameter("id"));
+		String libelle = request.getParameter("libelle");
+		Matiere m = matiereService.getById(id);
+		m.setLibelle(libelle);
+		matiereService.update(m);
+		return list(request, response, matiereService);
+	}
+
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		MatiereService matiereService = null;
+		ServletContext servletContext = request.getServletContext();
+		AnnotationConfigApplicationContext ctx = (AnnotationConfigApplicationContext) servletContext
+				.getAttribute("ctxSpring");
+		matiereService = ctx.getBean(MatiereService.class);
+		RequestDispatcher rd = null;
+		
+		
+		String query = request.getParameter("q");
+		
+		if(query.equals("insert")) 
+		{
+			rd = insert(request, response, matiereService);
+		}
+		else 
+		{
+			rd = update(request, response, matiereService);
+		}
+		
+		rd.forward(request, response);
 	}
 
 }

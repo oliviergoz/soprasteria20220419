@@ -35,8 +35,8 @@ public class QuestConfig {
 		dataSource.setDriverClassName(env.getProperty("datasource.driver"));
 		dataSource.setUrl(env.getProperty("datasource.url"));
 		dataSource.setUsername(env.getProperty("datasource.username"));
-		dataSource.setPassword(env.getProperty("datasource.password"));
-//		dataSource.setPassword("");
+	//	dataSource.setPassword(env.getProperty("datasource.password"));
+	dataSource.setPassword("");
 		return dataSource;
 	}
 
