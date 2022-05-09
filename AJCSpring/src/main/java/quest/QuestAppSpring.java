@@ -1,10 +1,10 @@
 package quest;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import quest.entity.Compte;
 import quest.entity.Evaluation;
 import quest.entity.Formateur;
 import quest.entity.Matiere;
@@ -107,7 +107,14 @@ public class QuestAppSpring {
 	
 	
 	public void run(String... args) {
-		init();
+		//init();
+		
+		List<Module> modules = moduleService.getAllBySession(1L);
+		
+		for(Module m : modules) 
+		{
+			System.out.println(m.getMatiere().getLibelle());
+		}
 			
 	/*	String login = "Oliv�";
 		String password="tom";

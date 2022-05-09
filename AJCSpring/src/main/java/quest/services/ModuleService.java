@@ -17,6 +17,10 @@ private ModuleRepository moduleRepository;
 	public List<Module> getAll() {
 		return moduleRepository.findAll();
 	}
+	
+	public List<Module> getAllBySession(Long session) {
+		return moduleRepository.findAllBySessionId(session);
+	}
 
 	public Module getById(Long id) {
 		return moduleRepository.findById(id).orElseThrow(RuntimeException::new);
