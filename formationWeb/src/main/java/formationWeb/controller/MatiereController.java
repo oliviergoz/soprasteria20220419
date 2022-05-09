@@ -77,8 +77,6 @@ public class MatiereController extends HttpServlet {
 		return list(request, response, matiereService);
 	}
 
-	
-
 	RequestDispatcher insert(HttpServletRequest request, HttpServletResponse response, MatiereService matiereService) {
 		String libelle = request.getParameter("libelle");
 		matiereService.create(new Matiere(libelle));
