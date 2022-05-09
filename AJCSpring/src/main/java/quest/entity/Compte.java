@@ -36,7 +36,6 @@ public abstract class Compte {
 		this.prenom = prenom;
 	}
 
-
 	public Long getId() {
 		return id;
 	}
