@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 @Entity
 @SequenceGenerator(sequenceName = "seqModule",name = "seqModuleJPA")
 public class Module {
@@ -28,6 +26,7 @@ public class Module {
 	private Formateur formateur;
 	@ManyToOne
 	private Session session;
+	
 	
 	private transient static Random rand = new Random();
 	
@@ -114,7 +113,7 @@ public class Module {
 	public void setSession(Session session) {
 		this.session = session;
 	}
-	
+
 	
 	
 }
