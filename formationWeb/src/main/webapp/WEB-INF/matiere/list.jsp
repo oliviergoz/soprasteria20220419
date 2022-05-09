@@ -61,6 +61,7 @@
 			</tbody>
 		</table>
 
+<a href="accueil.jsp"><input type="button" value="RETOUR" class="btn-danger btn"></a>
 	<div id="formAddMatiere" style="display:none">
 	
 	

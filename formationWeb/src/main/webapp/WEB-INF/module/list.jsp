@@ -78,6 +78,7 @@
 	</div>
 	
  </div>
+ <a href="accueil.jsp"><input type="button" value="RETOUR" class="btn-danger btn"></a>
 </body>
 </html>
 

@@ -6,13 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import quest.entity.Session;
+import quest.entity.Module;
+
 import quest.repositories.SessionRepository;
 
 @Service
 public class SessionService {
 @Autowired 
 private SessionRepository sessionRepository;
-	
+@Autowired
+ModuleService mds;
 	
 	public List<Session> getAll() {
 		return sessionRepository.findAll();
@@ -31,6 +34,13 @@ private SessionRepository sessionRepository;
 	}
 
 	public void delete(Session session) {
+	
+		List<Module> ms = mds.getAllBySession(session.getId()); 
+		
+		for(Module m : ms) 
+		{
+			mds.delete(m);
+		}
 		sessionRepository.delete(session);
 	}
 

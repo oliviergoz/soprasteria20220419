@@ -18,5 +18,6 @@
 	<input placeholder="libelle" name="libelle" type="text" value="${sessions.libelle}">
 	<input type="submit" value="Modifier" class="btn btn-warning">
 </form>
+<a href="session"><input type="button" value="RETOUR" class="btn-danger btn"></a>
 </body>
 </html>

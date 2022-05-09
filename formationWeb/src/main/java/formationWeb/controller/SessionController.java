@@ -50,19 +50,12 @@ public class SessionController extends HttpServlet {
 	}
 
 	
-	/*
 	RequestDispatcher delete(HttpServletRequest request, HttpServletResponse response, SessionService sessionService) {
 		Long id = Long.parseLong(request.getParameter("id"));
 		
-		
-		ModuleService ms = new ModuleService();
-		//recup list module
-		//les récupérer un à un
-		//les suppr un à un
 		sessionService.deleteById(id);
 		return list(request, response, sessionService);
 	}
-	*/
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -80,7 +73,9 @@ public class SessionController extends HttpServlet {
 		else if(query.equals("edit")) {
 			rd=edit(request, response, sessionService);
 		}
-		// delete
+		else if(query.equals("delete")) {
+			rd=delete(request, response, sessionService);
+		}
 		rd.forward(request, response);
 	}
 

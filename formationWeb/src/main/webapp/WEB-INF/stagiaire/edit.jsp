@@ -40,7 +40,7 @@
 
 	<input type="submit" value="Modifier" class="btn btn-warning">
 </form>
-
+<a href="stagiaire"><input type="button" value="RETOUR" class="btn-danger btn"></a>
 
 
 </body>

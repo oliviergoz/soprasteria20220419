@@ -51,6 +51,7 @@
 			<input type="submit" value="Modifier" class="btn btn-success">
 		</form>
 
+<a href="module"><input type="button" value="RETOUR" class="btn-danger btn"></a>
 
 
 </body>

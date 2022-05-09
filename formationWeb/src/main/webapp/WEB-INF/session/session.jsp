@@ -33,7 +33,7 @@
 						<td>${s.libelle}</td>
 						<td><a href="?q=edit&id=${s.id}" class="btn btn-warning">editer</a></td>
 						<td><a href="module?session=${s.id}" class="btn btn-primary">Voir les modules</a></td>
-						<!--  <td><a href="?q=delete&id=${s.id}" class="btn btn-danger">supprimer</a></td> -->
+						<td><a href="?q=delete&id=${s.id}" class="btn btn-danger">supprimer</a></td> 
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -48,6 +48,8 @@
 
 			</form>
 		</div>
+		
+		<a href="accueil.jsp"><input type="button" value="RETOUR" class="btn-danger btn"></a>
 </body>
 </html>
 
