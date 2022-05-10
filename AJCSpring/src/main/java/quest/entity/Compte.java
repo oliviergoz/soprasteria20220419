@@ -1,5 +1,7 @@
 package quest.entity;
 
+import java.util.Objects;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +37,6 @@ public abstract class Compte {
 		this.nom = nom;
 		this.prenom = prenom;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -84,6 +85,25 @@ public abstract class Compte {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compte other = (Compte) obj;
+		return Objects.equals(id, other.id);
 	}
 	
 	

@@ -13,6 +13,8 @@ public class MainRun {
 		aca.getBeanFactory().createBean(QuestAppSpring.class).run();
 		
 		aca.close();
+		
+		
 	}
 
 }
