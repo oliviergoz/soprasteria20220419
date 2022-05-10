@@ -19,27 +19,21 @@
 </head>
 <body>
 	<div class="container">
-		<h1>liste des matieres</h1>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>id:</th>
-					<th>libelle</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="m" items="${matieres}">
-					<tr>
-						<td>${m.id}</td>
-						<td>${m.libelle}</td>
-						<td><a class="btn btn-primary"
-							href="${base}/matiere/edit?id=${m.id}">editer</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<a href="${base}/matiere/add" class="btn btn-link">nouvelle
-			matiere</a>
+		<form method="post" action="${base}/matiere">
+			<div class="form-group">
+				<label>id:</label> <input name="id" class="form-control"
+					readonly="readonly" value="${matiere.id}"
+					placeholder="generation automatique">
+			</div>
+			<div class="form-group">
+				<label>libelle:</label> <input name="libelle" class="form-control"
+					value="${matiere.libelle}">
+			</div>
+			<div>
+				<button type="submit" class="btn btn-primary">enregistrer</button>
+				<a href="${base}/matiere" class="btn btn-warning">annuler</a>
+			</div>
+		</form>
 	</div>
 </body>
 </html>
