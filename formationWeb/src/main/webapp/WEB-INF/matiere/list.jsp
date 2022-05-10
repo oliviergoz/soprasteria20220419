@@ -69,7 +69,7 @@
 		<form action="matiere" method="post">
 
 			<input type="hidden" name="q" value="insert"> 
-			<input placeholder="libelle" name="libelle" type="text"> 
+			<input placeholder="libelle" name="libelle" type="text" > 
 			<input type="submit" value="Ajouter" class="btn btn-success">
 		</form>
 	</div>
