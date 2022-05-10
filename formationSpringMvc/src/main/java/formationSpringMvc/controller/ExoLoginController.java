@@ -1,5 +1,7 @@
 package formationSpringMvc.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,7 @@ public class ExoLoginController {
 
 	@PostMapping("")
 	public String checkLogin(@RequestParam(name = "login", required = false) String login,
-			@RequestParam(name = "password", required = false) String password, Model model) {
+			@RequestParam(name = "password", required = false) String password, Model model, HttpSession session) {
 		boolean error = false;
 		if (password == null || password.isEmpty() || login == null || login.isEmpty()) {
 			error = true;
@@ -30,6 +32,7 @@ public class ExoLoginController {
 			return "exo/login";
 		}
 		model.addAttribute("prenom", login);
+		session.setAttribute("login", login);
 		return "hello";
 	}
 }

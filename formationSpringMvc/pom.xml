@@ -34,7 +34,11 @@
 			<version>2.3.3</version>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>formation.soprasteria</groupId>
+			<artifactId>AJCSpring</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

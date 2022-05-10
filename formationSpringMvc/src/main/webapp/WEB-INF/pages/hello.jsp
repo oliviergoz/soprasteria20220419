@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>hello ${prenom}</h1>
+<h1>hello ${prenom} le login:${login}</h1>
 </body>
 </html>
