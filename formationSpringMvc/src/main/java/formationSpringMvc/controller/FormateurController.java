@@ -1,8 +1,11 @@
 package formationSpringMvc.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +43,12 @@ public class FormateurController {
 	}
 
 	@PostMapping("/save")
-	public String save(@ModelAttribute Formateur formateur, Model model) {
+	public String save(@Valid @ModelAttribute Formateur formateur, BindingResult br, Model model) {
+		if (br.hasErrors()) {
+			if (!(br.getErrorCount() == 1 && br.getFieldError("password") != null && formateur.getId() != null)) {
+				return goForm(formateur, model);
+			}
+		}
 		if (formateur.getId() != null) {
 			compteService.update(formateur);
 		} else {

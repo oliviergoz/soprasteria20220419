@@ -21,6 +21,7 @@
 <body>
 	<div class="container">
 		<h1>edition formateur</h1>
+
 		<form:form action="${base}/formateur/save" method="post"
 			modelAttribute="formateur">
 			<div class="form-group">
@@ -32,19 +33,26 @@
 			<div class="form-group">
 				<form:label path="prenom">prenom:</form:label>
 				<form:input path="prenom" class="form-control" />
+				<form:errors path="prenom" element="div"
+					cssClass="alert alert-danger"></form:errors>
 			</div>
 			<div class="form-group">
 				<form:label path="nom">nom:</form:label>
 				<form:input path="nom" class="form-control" />
+				<form:errors path="nom">
+					<div class="alert alert-danger">mon message a moi</div>
+				</form:errors>
 			</div>
 			<div class="form-group">
 				<form:label path="login">login:</form:label>
 				<form:input path="login" class="form-control" />
+				<form:errors path="login"></form:errors>
 			</div>
 			<c:if test="${formateur.id==null}">
 				<div class="form-group">
 					<form:label path="password">password:</form:label>
 					<form:input type="password" path="password" class="form-control" />
+					<form:errors path="password"></form:errors>
 				</div>
 			</c:if>
 			<div>
