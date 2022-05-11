@@ -101,4 +101,8 @@ public abstract class Compte {
 		return Objects.equals(id, other.id);
 	}
 
+	public String getInfos() {
+		return prenom + " " + nom;
+	}
+
 }

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @SequenceGenerator(sequenceName = "seqModule",name = "seqModuleJPA")
 public class Module {
@@ -17,7 +19,9 @@ public class Module {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator= "seqModuleJPA")
 	private Long id;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate debut;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fin;
 	private int code;
 	@ManyToOne
