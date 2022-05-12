@@ -32,6 +32,10 @@ public class CompteService {
 		return compteRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
 
+	public Formateur getByIdWithModules(Long id) {
+		return compteRepository.findByIdWithModules(id).orElseThrow(RuntimeException::new);
+	}
+
 	public Compte seConnecter(String login, String password) {
 		return compteRepository.seConnecter(login, password).orElseThrow(RuntimeException::new);
 	}

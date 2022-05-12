@@ -14,24 +14,28 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_compte")
 @Table(name = "account")
 @SequenceGenerator(sequenceName = "seqAccount", name = "seqAccountJPA")
 public abstract class Compte {
-
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAccountJPA")
 	protected Long id;
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "pas de login:pas bien")
 	protected String login;
 	@NotEmpty
 	protected String password;
-
+	@JsonView(JsonViews.Common.class)
 	protected String nom;
 	@NotEmpty
 	@Size(min = 2)
+	@JsonView(JsonViews.Common.class)
 	protected String prenom;
 
 	public Compte() {

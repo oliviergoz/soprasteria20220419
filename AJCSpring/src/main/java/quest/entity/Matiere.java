@@ -8,15 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
-@Entity
-@SequenceGenerator(sequenceName = "seqMatiere",name = "seqMatiereJPA")
-public class Matiere {
+import com.fasterxml.jackson.annotation.JsonView;
 
+@Entity
+@SequenceGenerator(sequenceName = "seqMatiere", name = "seqMatiereJPA")
+public class Matiere {
+	@JsonView(JsonViews.Common.class)
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator= "seqMatiereJPA")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMatiereJPA")
 	private Long id;
+	@JsonView(JsonViews.Common.class)
 	private String libelle;
-	
+
 	public Matiere() {
 	}
 
@@ -56,7 +59,5 @@ public class Matiere {
 		Matiere other = (Matiere) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
+
 }

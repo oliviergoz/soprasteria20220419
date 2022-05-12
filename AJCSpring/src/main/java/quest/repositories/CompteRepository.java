@@ -11,14 +11,17 @@ import quest.entity.Compte;
 import quest.entity.Formateur;
 import quest.entity.Stagiaire;
 
-public interface CompteRepository extends JpaRepository<Compte, Long>{
-	
+public interface CompteRepository extends JpaRepository<Compte, Long> {
+
 	@Query("Select c from Compte c where c.login=:login and c.password=:password")
-	Optional<Compte> seConnecter(@Param("login") String login,@Param("password") String password);
+	Optional<Compte> seConnecter(@Param("login") String login, @Param("password") String password);
 
 	@Query("Select s from Stagiaire s")
 	List<Stagiaire> findAllStagiaires();
-	
+
 	@Query("Select f from Formateur f")
 	List<Formateur> findAllFormateurs();
+
+	@Query("select f from Formateur f left join fetch f.modules where f.id=:id")
+	Optional<Formateur> findByIdWithModules(@Param("id") Long id);
 }
