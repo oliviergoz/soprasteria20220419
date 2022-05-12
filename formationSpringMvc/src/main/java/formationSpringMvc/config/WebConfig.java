@@ -12,7 +12,7 @@ import quest.config.QuestConfig;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"formationSpringMvc.controller"})
+@ComponentScan(basePackages = {"formationSpringMvc.controller","formationSpringMvc.restController"})
 @Import(QuestConfig.class)
 public class WebConfig {
 

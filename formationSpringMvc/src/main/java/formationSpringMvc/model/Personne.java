@@ -3,6 +3,7 @@ package formationSpringMvc.model;
 public class Personne {
 	private String prenom;
 	private String nom;
+	private Adresse adresse;
 
 	public Personne() {
 
@@ -22,6 +23,14 @@ public class Personne {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
 	}
 
 }
