@@ -37,13 +37,24 @@
 								value="${dateFin}" pattern="dd/MM/yyyy" /></td>
 						<td><a href="${base}/module/edit/?id=${m.id}"
 							class="btn btn-primary">editer</a></td>
-						<td>supprimer</td>
+						<td><a href="${base}/module/suprimer/?id=${m.id}"
+							class="btn btn-primary">Suprimer</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<a href="${base}/module/add" class="btn btn-link">ajouter un
-			module</a>
+
+
+		<c:choose>
+			<c:when test="${session!=null}">
+				<a href="${base}/module/add?id=${session.id}" class="btn btn-link">ajouter
+					un module a cette session </a>
+			</c:when>
+			<c:otherwise>
+				<a href="${base}/module/add" class="btn btn-link">ajouter un
+					module</a>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </body>
 </html>
