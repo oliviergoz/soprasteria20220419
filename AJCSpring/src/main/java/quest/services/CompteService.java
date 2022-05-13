@@ -40,10 +40,10 @@ public class CompteService {
 		return compteRepository.seConnecter(login, password).orElseThrow(RuntimeException::new);
 	}
 
-	public void create(Compte compte) {
+	public Compte create(Compte compte) {
 		// encodage du mot de passe quand on saura faire
 		// compte.setPassword(fonctionEncodage(compte.getPassword()));
-		compteRepository.save(compte);
+		return compteRepository.save(compte);
 	}
 
 	public Compte update(Compte compte) {
