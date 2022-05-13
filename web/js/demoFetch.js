@@ -21,7 +21,7 @@ function list() {
 function search() {
 	console.log(personnes);
 	let id = document.querySelector('#id').value;
-	fetch(`http://localhost:3000/personnes/${id}`)
+	fetch(`http://localhost:8080/mvc/api/formateur/${id}`)
 		.then(response => response.json())
 		.then(personne => {
 			document.querySelector('#p').innerHTML = `id=${personne.id}, prenom=${personne.prenom}, nom=${personne.nom}`;

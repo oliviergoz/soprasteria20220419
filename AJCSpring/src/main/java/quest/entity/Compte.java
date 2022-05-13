@@ -14,6 +14,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -21,6 +24,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 @DiscriminatorColumn(name = "type_compte")
 @Table(name = "account")
 @SequenceGenerator(sequenceName = "seqAccount", name = "seqAccountJPA")
+@JsonTypeInfo(
+		use=JsonTypeInfo.Id.NAME,
+		include = JsonTypeInfo.As.PROPERTY,
+		property = "type"
+		)
+@JsonSubTypes({
+	@Type(value=Formateur.class,name="formateur"),
+	@Type(value=Stagiaire.class,name="stagiaire"),
+	@Type(value=Admin.class,name="root")
+})
 public abstract class Compte {
 	@JsonView(JsonViews.Common.class)
 	@Id

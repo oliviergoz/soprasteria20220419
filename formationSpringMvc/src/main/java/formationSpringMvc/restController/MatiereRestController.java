@@ -63,9 +63,13 @@ public class MatiereRestController {
 		// matiere.setLibelle(fields.get("libelle").toString());
 
 		fields.forEach((k, v) -> {
-			Field field = ReflectionUtils.findField(Matiere.class, k);
-			ReflectionUtils.makeAccessible(field);
-			ReflectionUtils.setField(field, matiere, v);
+			if (k.equals("attributQuiPoseProbleme")) {
+				;
+			}else {
+				Field field = ReflectionUtils.findField(Matiere.class, k);
+				ReflectionUtils.makeAccessible(field);
+				ReflectionUtils.setField(field, matiere, v);
+			}
 		});
 
 		return matiereService.update(matiere);
