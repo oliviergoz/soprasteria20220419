@@ -1,0 +1,29 @@
+logging:
+  level:
+    formation:
+      soprasteria:
+        formationSpringBoot:
+          services:
+            ConsoleService: trace
+    root: info
+server:
+  servlet:
+    context-path: /boot
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/quest
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        format_sql: true
+        show_sql: false
+  mvc:
+    view:
+      prefix: /WEB-INF/pages/
+      suffix: .jsp
