@@ -1,0 +1,5 @@
+2022-05-23 10:49:22.400 TRACE 37393 --- [main] f.s.f.services.ConsoleService            : trace
+2022-05-23 10:49:22.401 DEBUG 37393 --- [main] f.s.f.services.ConsoleService            : debug
+2022-05-23 10:49:22.401  INFO 37393 --- [main] f.s.f.services.ConsoleService            : info
+2022-05-23 10:49:22.401  WARN 37393 --- [main] f.s.f.services.ConsoleService            : warning
+2022-05-23 10:49:22.401 ERROR 37393 --- [main] f.s.f.services.ConsoleService            : error
