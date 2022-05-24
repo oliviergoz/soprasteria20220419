@@ -17,19 +17,27 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "users")
 @SequenceGenerator(name = "seqUser", sequenceName = "seq_users", initialValue = 10, allocationSize = 1)
 public class User implements UserDetails {
 	@Id
 	@GeneratedValue(generator = "seqUser", strategy = GenerationType.SEQUENCE)
+	@JsonView(JsonViews.Common.class)
 	private Long id;
 	@Column(name = "login", unique = true, nullable = false)
 	@NotEmpty
+	@JsonView(JsonViews.Common.class)
 	private String login;
 	@Column(name = "password", nullable = false)
 	@NotEmpty
 	private String password;
+	@JsonView(JsonViews.Common.class)
+	private String prenom;
+	@JsonView(JsonViews.Common.class)
+	private String nom;
 
 	public User() {
 
@@ -58,6 +66,22 @@ public class User implements UserDetails {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	@Override
