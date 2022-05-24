@@ -1,19 +1,11 @@
-logging:
-  level:
-    formation:
-      soprasteria:
-        formationSpringBoot:
-          services:
-            ConsoleService: trace
-    root: info
 server:
   servlet:
-    context-path: /boot
+    context-path: /exo
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     password: postgres
-    url: jdbc:postgresql://localhost:5432/quest
+    url: jdbc:postgresql://localhost:5432/exercice
     username: postgres
   jpa:
     hibernate:
@@ -27,6 +19,3 @@ spring:
     view:
       prefix: /WEB-INF/pages/
       suffix: .jsp
-
-  main:
-    allow-circular-references: true
