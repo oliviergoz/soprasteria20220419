@@ -3,6 +3,7 @@ package formation.soprasteria.formationSpringBoot.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +22,7 @@ public class FormateurController {
 	@Autowired
 	private CompteService compteService;
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("")
 	public String list(Model model) {
 		model.addAttribute("formateurs", compteService.getAllFormateurs());

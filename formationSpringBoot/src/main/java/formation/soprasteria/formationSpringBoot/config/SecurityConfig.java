@@ -3,33 +3,48 @@ package formation.soprasteria.formationSpringBoot.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
-		http.antMatcher("/**")
+		http.antMatcher("/api/**")
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+				.csrf().ignoringAntMatchers("/api/**")
+				.and()
 				.authorizeHttpRequests()
-					.antMatchers("/home","/formateur/**","/formlogin").permitAll()
-					.antMatchers("/matiere/**").hasRole("ADMIN")
+					.antMatchers(HttpMethod.GET,"/api/matiere/**").permitAll()
 					.anyRequest().authenticated()
 				.and()
-				.formLogin()
-					.loginPage("/formlogin")
-					.defaultSuccessUrl("/secure/home")
-					.failureUrl("/formlogin?error=true")
-				.and()
-				.logout()
-					.logoutUrl("/logout")  //a appeler en POST!!!!!!!=> csrf à traiter
-					.logoutSuccessUrl("/home");
+				.httpBasic();
+		
+//		http.antMatcher("/**")
+//				.authorizeHttpRequests()
+//					.antMatchers("/","/home","/formateur/**","/formlogin").permitAll()
+//					.antMatchers("/matiere/**").hasRole("ADMIN")
+//					.anyRequest().authenticated()
+//				.and()
+//				.formLogin()
+//					.loginPage("/formlogin")
+//					.defaultSuccessUrl("/secure/home")
+//					.failureUrl("/formlogin?error=true")
+//				.and()
+//				.logout()
+//					.logoutUrl("/logout")  //a appeler en POST!!!!!!!=> csrf à traiter
+//					.logoutSuccessUrl("/home");
 		// @formatter:on
 	}
 
