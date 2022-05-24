@@ -51,6 +51,12 @@
 						itemValue="id" />
 				</form:select>
 			</div>
+
+					<div class="form-group">
+						<form:label path="session.id">session:</form:label>
+						<form:input path="session.id" readonly="true"/>
+					</div>
+		
 			<div>
 				<button type="submit" class="btn btn-primary">enregistrer</button>
 				<a href="${base}/module" class="btn btn-warning">annuler</a>

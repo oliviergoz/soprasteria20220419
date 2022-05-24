@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @SequenceGenerator(sequenceName = "seqEvaluation",name = "seqEvaluationJPA")
 public class Evaluation {
@@ -17,6 +19,7 @@ public class Evaluation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator= "seqEvaluationJPA")
 	private Long id;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	private double note;
 	private String commentaire;
