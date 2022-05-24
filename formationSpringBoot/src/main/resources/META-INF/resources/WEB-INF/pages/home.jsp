@@ -19,8 +19,8 @@
 </head>
 <body>
 	<div class="container">
-		<h1>bonjour ${user.login}</h1>
-		<h1>${pageContext.request.userPrincipal.name}</h1>
+		<jsp:include page="./logout.jsp"></jsp:include>
+		<h1>mon site avec pleins de trucs dedans</h1>
 	</div>
 </body>
 </html>

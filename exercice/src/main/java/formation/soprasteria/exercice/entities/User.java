@@ -51,6 +51,7 @@ public class User implements UserDetails {
 		this.login = login;
 	}
 
+	@Override
 	public String getPassword() {
 		return password;
 	}

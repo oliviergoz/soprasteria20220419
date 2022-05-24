@@ -18,11 +18,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// @formatter:off
 		http.antMatcher("/**")
 				.authorizeHttpRequests()
-					.antMatchers("/formateur/**").permitAll()
+					.antMatchers("/home","/formateur/**","/formlogin").permitAll()
 					.antMatchers("/matiere/**").hasRole("ADMIN")
 					.anyRequest().authenticated()
 				.and()
-				.formLogin();
+				.formLogin()
+					.loginPage("/formlogin")
+					.defaultSuccessUrl("/secure/home")
+					.failureUrl("/formlogin?error=true")
+				.and()
+				.logout()
+					.logoutUrl("/logout")  //a appeler en POST!!!!!!!=> csrf à traiter
+					.logoutSuccessUrl("/home");
 		// @formatter:on
 	}
 
@@ -39,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailService);		
 		// @formatter:on
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
