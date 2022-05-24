@@ -19,8 +19,26 @@
 </head>
 <body>
 	<div class="container">
-		<h1>bonjour ${user.login}</h1>
-		<h1>${pageContext.request.userPrincipal.name}</h1>
+		<c:if test="param.error!=null">
+			<div class="alert alert-danger">authentification incorrecte</div>
+		</c:if>
+
+		<form method="post">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}">
+			<div class="form-group">
+				<label for="username">login</label> <input id="username"
+					name="username" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="password">password</label> <input type="password"
+					id="password" name="password" class="form-control">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">envoyer</button>
+				<a href="${base}/home" class="btn btn-link">annuler</a>
+			</div>
+		</form>
 	</div>
 </body>
 </html>

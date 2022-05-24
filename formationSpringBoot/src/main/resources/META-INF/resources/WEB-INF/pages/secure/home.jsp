@@ -19,8 +19,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>bonjour ${user.login}</h1>
-		<h1>${pageContext.request.userPrincipal.name}</h1>
+		<h1>bonjour ${pageContext.request.userPrincipal.name}</h1>
 	</div>
 </body>
 </html>
