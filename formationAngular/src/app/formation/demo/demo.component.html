@@ -1,0 +1,12 @@
+<p>bonjour {{ personne.prenom }} {{ personne.nom }} binding One-way</p>
+<div>
+  Binding two-ways<br />
+
+  <input [(ngModel)]="personne.prenom" />
+
+  <button (click)="clickBouton()">click</button>
+
+  <div style="color: red">du texte en rouge</div>
+  <div [style.color]="couleur">du texte en couleur</div>
+  <input [value]="couleur" />
+</div>
