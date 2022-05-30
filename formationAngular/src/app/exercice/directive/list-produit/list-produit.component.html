@@ -1,0 +1,13 @@
+<table>
+  <tr *ngFor="let p of produits">
+    <td>{{ p.nom }}</td>
+    <td>{{ p.prix }}</td>
+    <td [ngClass]="{ rouge: p.prix! < 0, vert: p.prix! > 0 }">
+      {{ getInfo(p.prix!) }}
+    </td>
+  </tr>
+</table>
+<app-edit-produit
+  button="ajouter"
+  (produitReady)="addProduit($event)"
+></app-edit-produit>

@@ -13,9 +13,27 @@ import { CandidatComponent } from './exercice/vote/candidat/candidat.component';
 import { ElectionComponent } from './exercice/vote/election/election.component';
 import { TestComponent } from './exercice/vote/test/test.component';
 import { DemoDirectiveComponent } from './formation/component/demo-directive/demo-directive.component';
+import { ListProduitComponent } from './exercice/directive/list-produit/list-produit.component';
+import { EditProduitComponent } from './exercice/directive/edit-produit/edit-produit.component';
+import { DemoDirective } from './formation/directive/demo.directive';
 
 @NgModule({
-  declarations: [AppComponent, DemoComponent, AutreComponent, CouleurComponent, PersonneComponent, ShowPersonneComponent, EditPersonneComponent, CandidatComponent, ElectionComponent, TestComponent, DemoDirectiveComponent],
+  declarations: [
+    AppComponent,
+    DemoComponent,
+    AutreComponent,
+    CouleurComponent,
+    PersonneComponent,
+    ShowPersonneComponent,
+    EditPersonneComponent,
+    CandidatComponent,
+    ElectionComponent,
+    TestComponent,
+    DemoDirectiveComponent,
+    ListProduitComponent,
+    EditProduitComponent,
+    DemoDirective,
+  ],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
