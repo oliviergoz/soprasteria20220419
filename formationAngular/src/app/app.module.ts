@@ -16,6 +16,13 @@ import { DemoDirectiveComponent } from './formation/component/demo-directive/dem
 import { ListProduitComponent } from './exercice/directive/list-produit/list-produit.component';
 import { EditProduitComponent } from './exercice/directive/edit-produit/edit-produit.component';
 import { DemoDirective } from './formation/directive/demo.directive';
+import { RouterModule } from '@angular/router';
+import { routes } from './routes';
+import { ParametreComponent } from './formation/component/parametre/parametre.component';
+import { QueryParamsComponent } from './formation/component/query-params/query-params.component';
+import { FormBonjourComponent } from './exercice/form-bonjour/form-bonjour.component';
+import { BonjourComponent } from './exercice/bonjour/bonjour.component';
+import { LienDirective } from './formation/directive/lien.directive';
 
 @NgModule({
   declarations: [
@@ -33,8 +40,13 @@ import { DemoDirective } from './formation/directive/demo.directive';
     ListProduitComponent,
     EditProduitComponent,
     DemoDirective,
+    ParametreComponent,
+    QueryParamsComponent,
+    FormBonjourComponent,
+    BonjourComponent,
+    LienDirective,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],
 })
