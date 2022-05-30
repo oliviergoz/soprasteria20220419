@@ -1,0 +1,30 @@
+<ng-template #laBaliseSiCEstFaux> c'est faux </ng-template>
+
+<div>
+  <h1>les directives angular</h1>
+  <div [ngClass]="{ rouge: !changeCouleur(), vert: changeCouleur() }">
+    qsdlkjmqlsmd jmqldsjf qmlfjmjl k
+  </div>
+
+  <div *ngIf="couleur == 'rouge'; else laBaliseSiCEstFaux">demo if vrai</div>
+
+  <div [ngSwitch]="couleur">
+    <p *ngSwitchCase="'rouge'">rouge</p>
+    <p *ngSwitchCase="'vert'">vert</p>
+    <p *ngSwitchDefault>autre</p>
+  </div>
+
+  <ul>
+    <li *ngFor="let nom of list">
+      {{ nom }}
+    </li>
+  </ul>
+
+  <table>
+    <tr *ngFor="let p of personnes; let index = index">
+      <td>{{ index }}</td>
+      <td>{{ p.prenom }}</td>
+      <td>{{ p.nom }}</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,4 @@
+<app-test [nom]="candidatEnTete" [vote]="vote"></app-test>
+<candidat [nom]="nom()" (voteRecu)="traitementVote($event)"></candidat>
+<candidat nom="tutu()" (voteRecu)="traitementVote($event)"></candidat>
+<candidat nom="titi" (voteRecu)="traitementVote($event)"></candidat>
