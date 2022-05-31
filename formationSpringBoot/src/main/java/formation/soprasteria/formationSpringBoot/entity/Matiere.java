@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@SequenceGenerator(sequenceName = "seqMatiere",name = "seqMatiereJPA")
+@SequenceGenerator(sequenceName = "seqMatiere",name = "seqMatiereJPA",initialValue = 100,allocationSize = 1)
 public class Matiere {
 
 	@Id

@@ -4,9 +4,20 @@
     <td>{{ m.id }}</td>
     <td>{{ m.libelle }}</td>
     <td>
+      <a
+        routerLink="/matiere/edit/{{ m.id }}"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >edition</a
+      >
+    </td>
+    <td>
       <button (click)="delete(m.id!)" class="btn btn-outline-danger">
         supprimer
       </button>
     </td>
   </tr>
 </table>
+<a routerLink="/matiere/edit" routerLinkActive="active" class="btn btn-link"
+  >nouvelle matiere</a
+>

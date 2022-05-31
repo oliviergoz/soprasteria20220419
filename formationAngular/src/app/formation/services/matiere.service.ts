@@ -15,12 +15,34 @@ export class MatiereService {
     return this.httpClient.get<Matiere[]>(this.url);
   }
 
+  getById(id: number): Observable<Matiere> {
+    return this.httpClient.get<Matiere>(`${this.url}/${id}`);
+  }
+
   delete(id: number): Observable<void> {
-    let httpHeaders: HttpHeaders = new HttpHeaders({
+    return this.httpClient.delete<void>(`${this.url}/${id}`, {
+      headers: this.headers,
+    });
+  }
+
+  private get headers(): HttpHeaders {
+    return new HttpHeaders({
       Authorization: 'Basic ' + btoa('admin:admin'),
     });
-    return this.httpClient.delete<void>(`${this.url}/${id}`, {
-      headers: httpHeaders,
+  }
+
+  update(matiere: Matiere): Observable<Matiere> {
+    return this.httpClient.put<Matiere>(`${this.url}/${matiere.id}`, matiere, {
+      headers: this.headers,
+    });
+  }
+
+  create(matiere: Matiere) {
+    let matiereJson = {
+      libelle: matiere.libelle,
+    };
+    return this.httpClient.post<Matiere>(this.url, matiereJson, {
+      headers: this.headers,
     });
   }
 }

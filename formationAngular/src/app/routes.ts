@@ -6,6 +6,7 @@ import { ParametreComponent } from './formation/component/parametre/parametre.co
 import { ListProduitComponent } from './exercice/directive/list-produit/list-produit.component';
 import { HomeComponent } from './formation/component/home/home.component';
 import { Routes } from '@angular/router';
+import { EditMatiereComponent } from './formation/component/matiere/edit-matiere/edit-matiere.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,5 +16,7 @@ export const routes: Routes = [
   { path: 'form', component: FormBonjourComponent },
   { path: 'bonjour/:prenom', component: BonjourComponent },
   { path: 'matiere', component: ListMatiereComponent },
+  { path: 'matiere/edit', component: EditMatiereComponent },
+  { path: 'matiere/edit/:id', component: EditMatiereComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

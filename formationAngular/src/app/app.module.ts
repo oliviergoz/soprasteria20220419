@@ -25,6 +25,7 @@ import { QueryParamsComponent } from './formation/component/query-params/query-p
 import { routes } from './routes';
 import { ListMatiereComponent } from './formation/component/matiere/list-matiere/list-matiere.component';
 import { MenuComponent } from './formation/component/menu/menu.component';
+import { EditMatiereComponent } from './formation/component/matiere/edit-matiere/edit-matiere.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MenuComponent } from './formation/component/menu/menu.component';
     FormBonjourComponent,
     ListMatiereComponent,
     MenuComponent,
+    EditMatiereComponent,
   ],
   imports: [
     BrowserModule,
