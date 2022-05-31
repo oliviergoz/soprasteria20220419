@@ -7,6 +7,8 @@ import { ListProduitComponent } from './exercice/directive/list-produit/list-pro
 import { HomeComponent } from './formation/component/home/home.component';
 import { Routes } from '@angular/router';
 import { EditMatiereComponent } from './formation/component/matiere/edit-matiere/edit-matiere.component';
+import { ListModuleComponent } from './formation/component/module/list-module/list-module.component';
+import { EditModuleComponent } from './formation/component/module/edit-module/edit-module.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,5 +20,8 @@ export const routes: Routes = [
   { path: 'matiere', component: ListMatiereComponent },
   { path: 'matiere/edit', component: EditMatiereComponent },
   { path: 'matiere/edit/:id', component: EditMatiereComponent },
+  { path: 'module', component: ListModuleComponent },
+  { path: 'module/edit', component: EditModuleComponent },
+  { path: 'module/edit/:id', component: EditModuleComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

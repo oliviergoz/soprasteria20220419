@@ -26,6 +26,8 @@ import { routes } from './routes';
 import { ListMatiereComponent } from './formation/component/matiere/list-matiere/list-matiere.component';
 import { MenuComponent } from './formation/component/menu/menu.component';
 import { EditMatiereComponent } from './formation/component/matiere/edit-matiere/edit-matiere.component';
+import { ListModuleComponent } from './formation/component/module/list-module/list-module.component';
+import { EditModuleComponent } from './formation/component/module/edit-module/edit-module.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { EditMatiereComponent } from './formation/component/matiere/edit-matiere
     ListMatiereComponent,
     MenuComponent,
     EditMatiereComponent,
+    ListModuleComponent,
+    EditModuleComponent,
   ],
   imports: [
     BrowserModule,

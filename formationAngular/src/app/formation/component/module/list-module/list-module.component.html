@@ -1,0 +1,20 @@
+<table class="table">
+  <tr *ngFor="let module of modules | async">
+    <td>{{ module.id }}</td>
+    <td>{{ module.code }}</td>
+    <td>{{ module.debut }}</td>
+    <td>{{ module.fin }}</td>
+    <td>{{ module.matiere?.id }} {{ module.matiere?.libelle }}</td>
+    <td>
+      <a routerLink="/module/edit/{{ module.id }}" class="btn btn-primary"
+        >edition</a
+      >
+    </td>
+    <td>
+      <button (click)="delete(module.id!)" class="btn btn-danger">
+        supprimer
+      </button>
+    </td>
+  </tr>
+</table>
+<a routerLink="/module/edit" class="btn btn-link">nouveau module</a>

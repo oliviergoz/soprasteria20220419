@@ -20,7 +20,6 @@ export class ListMatiereComponent implements OnInit {
 
   initMatiere() {
     this.matiereService.getAll().subscribe((datas) => {
-      console.log(datas);
       this.matieres = datas;
     });
   }

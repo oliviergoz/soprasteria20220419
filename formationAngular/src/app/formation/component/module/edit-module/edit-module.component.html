@@ -1,0 +1,36 @@
+<div>
+  <div class="form-group">
+    <label>id:</label>
+    <input class="form-control" [(ngModel)]="module.id" readonly />
+  </div>
+  <div class="form-group">
+    <label>code</label>
+    <input type="number" class="form-control" [(ngModel)]="module.code" />
+  </div>
+  <div class="form-group">
+    <label>date debut</label>
+    <input type="date" class="form-control" [(ngModel)]="module.debut" />
+  </div>
+  <div class="form-group">
+    <label></label>
+    <input type="date" class="form-control" [(ngModel)]="module.fin" />
+  </div>
+  <div class="form-group">
+    <label>matiere</label>
+    <select
+      class="form-control"
+      [(ngModel)]="module.matiere"
+      [compareWith]="byId"
+    >
+      <option *ngFor="let matiere of matieres | async" [ngValue]="matiere">
+        {{ matiere.id }} {{ matiere.libelle }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <button (click)="save()" class="btn btn-primary">enregistrer</button>
+    <a routerLink="/module" routerLinkActive="active" class="btn btn-link"
+      >annuler</a
+    >
+  </div>
+</div>
