@@ -1,5 +1,7 @@
 package formation.soprasteria.formationSpringBoot.restController;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,12 @@ public class ModuleRestController {
 
 	@Autowired
 	private ModuleService moduleService;
+	
+	@GetMapping("")
+	@JsonView(JsonViews.ModuleWithMatiere.class)
+	public List<Module> getAll(){
+		return moduleService.getAll();
+	}
 
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.ModuleWithMatiere.class)
