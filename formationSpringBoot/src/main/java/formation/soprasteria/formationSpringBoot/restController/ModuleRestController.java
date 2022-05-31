@@ -61,6 +61,7 @@ public class ModuleRestController {
 	}
 	
 	@PostMapping("")
+	@JsonView(JsonViews.ModuleWithMatiere.class)
 	public Module create (@Valid @RequestBody Module module,BindingResult br) {
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -69,6 +70,7 @@ public class ModuleRestController {
 	}
 	
 	@PutMapping("/{id}")
+	@JsonView(JsonViews.ModuleWithMatiere.class)
 	public Module update(@Valid @RequestBody Module module,BindingResult br,@PathVariable Long id) {
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
