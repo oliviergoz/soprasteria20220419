@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import formation.soprasteria.formationSpringBoot.entity.Matiere;
 import formation.soprasteria.formationSpringBoot.exception.MatiereException;
 import formation.soprasteria.formationSpringBoot.repositories.MatiereRepository;
+import formation.soprasteria.formationSpringBoot.repositories.ModuleRepository;
 
 @Service
 public class MatiereService {
 @Autowired 
 private MatiereRepository matiereRepository;
+private ModuleRepository moduleRepository;
 	
 	
 	public List<Matiere> getAll() {
@@ -32,6 +34,7 @@ private MatiereRepository matiereRepository;
 	}
 
 	public void delete(Matiere matiere) {
+		moduleRepository.setMatiereToNull(matiere);
 		matiereRepository.delete(matiere);
 	}
 

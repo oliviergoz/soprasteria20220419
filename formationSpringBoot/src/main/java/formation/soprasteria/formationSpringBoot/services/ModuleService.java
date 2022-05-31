@@ -26,8 +26,8 @@ private ModuleRepository moduleRepository;
 		return moduleRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
 
-	public void create(Module module) {
-		moduleRepository.save(module);
+	public Module create(Module module) {
+		return moduleRepository.save(module);
 	}
 
 	public Module update(Module module) {
