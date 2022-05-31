@@ -1,0 +1,12 @@
+<div *ngIf="showMessage" class="alert alert-primary">{{ message }}</div>
+<table class="table">
+  <tr *ngFor="let m of matieres">
+    <td>{{ m.id }}</td>
+    <td>{{ m.libelle }}</td>
+    <td>
+      <button (click)="delete(m.id!)" class="btn btn-outline-danger">
+        supprimer
+      </button>
+    </td>
+  </tr>
+</table>

@@ -1,3 +1,4 @@
+import { ListMatiereComponent } from './formation/component/matiere/list-matiere/list-matiere.component';
 import { BonjourComponent } from './exercice/bonjour/bonjour.component';
 import { FormBonjourComponent } from './exercice/form-bonjour/form-bonjour.component';
 import { QueryParamsComponent } from './formation/component/query-params/query-params.component';
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: 'query-param', component: QueryParamsComponent },
   { path: 'form', component: FormBonjourComponent },
   { path: 'bonjour/:prenom', component: BonjourComponent },
+  { path: 'matiere', component: ListMatiereComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

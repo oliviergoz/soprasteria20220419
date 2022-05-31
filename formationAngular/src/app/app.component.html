@@ -1,17 +1,3 @@
-<nav>
-  <a routerLink="/home" routerLinkActive="active" ngLink>home</a>
-  <a routerLink="/form" routerLinkActive="active" class="btn btn-link"
-    >formulaire bonjour</a
-  >
-  <a [routerLink]="[{ outlets: { primary: 'home', footer: 'produits' } }]"
-    >produits dans footer</a
-  >
-  <a
-    [routerLink]="[
-      { outlets: { primary: 'home', footer: ['parametre', 'olivier'] } }
-    ]"
-    >parametre dans footer</a
-  >
-</nav>
+<app-menu></app-menu>
 <router-outlet></router-outlet>
 <router-outlet name="footer"></router-outlet>

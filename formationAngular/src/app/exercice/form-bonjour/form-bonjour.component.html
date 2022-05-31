@@ -2,7 +2,7 @@
   <div *ngIf="showAlert" class="alert alert-danger">{{ message }}</div>
   <div>
     <label>prenom:</label>
-    <input [(ngModel)]="prenom" class="form-control" />
+    <input class="form-control" [(ngModel)]="prenom" />
   </div>
   <div>
     <button class="btn btn-primary" (click)="send()">envoyer</button>

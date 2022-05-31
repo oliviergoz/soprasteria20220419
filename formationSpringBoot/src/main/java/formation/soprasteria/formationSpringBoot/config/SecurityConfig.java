@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf().ignoringAntMatchers("/api/**")
 				.and()
 				.authorizeHttpRequests()
+					.antMatchers(HttpMethod.OPTIONS).permitAll()
 					.antMatchers(HttpMethod.GET,"/api/matiere/**").permitAll()
 					.anyRequest().authenticated()
 				.and()

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-bonjour.component.css'],
 })
 export class FormBonjourComponent implements OnInit {
-  prenom = '';
+  prenom: string = '';
   showAlert = false;
   message = '';
   constructor(private router: Router) {}

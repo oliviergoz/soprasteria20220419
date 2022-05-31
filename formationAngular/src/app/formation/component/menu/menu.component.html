@@ -1,0 +1,21 @@
+<nav>
+  <a routerLink="/home" routerLinkActive="active" ngLink>home</a>
+  <a routerLink="/form" routerLinkActive="active" class="btn btn-link"
+    >formulaire bonjour</a
+  >
+  <a
+    [routerLink]="[{ outlets: { primary: 'home', footer: 'produits' } }]"
+    class="btn btn-link"
+    >produits dans footer</a
+  >
+  <a
+    [routerLink]="[
+      { outlets: { primary: 'home', footer: ['parametre', 'olivier'] } }
+    ]"
+    class="btn btn-link"
+    >parametre dans footer</a
+  >
+  <a routerLink="/matiere" routerLinkActive="active" class="btn btn-link"
+    >matieres</a
+  >
+</nav>

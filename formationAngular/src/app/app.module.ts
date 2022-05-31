@@ -1,3 +1,4 @@
+import { FormBonjourComponent } from './exercice/form-bonjour/form-bonjour.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,12 +18,13 @@ import { ListProduitComponent } from './exercice/directive/list-produit/list-pro
 import { EditProduitComponent } from './exercice/directive/edit-produit/edit-produit.component';
 import { DemoDirective } from './formation/directive/demo.directive';
 import { RouterModule } from '@angular/router';
-import { routes } from './routes';
+import { HttpClientModule } from '@angular/common/http';
+
 import { ParametreComponent } from './formation/component/parametre/parametre.component';
 import { QueryParamsComponent } from './formation/component/query-params/query-params.component';
-import { FormBonjourComponent } from './exercice/form-bonjour/form-bonjour.component';
-import { BonjourComponent } from './exercice/bonjour/bonjour.component';
-import { LienDirective } from './formation/directive/lien.directive';
+import { routes } from './routes';
+import { ListMatiereComponent } from './formation/component/matiere/list-matiere/list-matiere.component';
+import { MenuComponent } from './formation/component/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -43,10 +45,15 @@ import { LienDirective } from './formation/directive/lien.directive';
     ParametreComponent,
     QueryParamsComponent,
     FormBonjourComponent,
-    BonjourComponent,
-    LienDirective,
+    ListMatiereComponent,
+    MenuComponent,
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
