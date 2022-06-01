@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@SequenceGenerator(sequenceName = "seqModule",name = "seqModuleJPA",initialValue = 100,allocationSize = 1)
+@SequenceGenerator(sequenceName = "seq_module",name = "seqModuleJPA",initialValue = 100,allocationSize = 1)
 public class Module {
 
 	@JsonView(JsonViews.Common.class)

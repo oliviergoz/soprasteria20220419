@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(sequenceName = "seqSession",name = "seqSessionJPA")
+@SequenceGenerator(sequenceName = "seq_session",name = "seqSessionJPA",initialValue = 300,allocationSize = 1)
 public class Session {
 
 	@Id

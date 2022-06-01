@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_compte")
 @Table(name = "account")
-@SequenceGenerator(sequenceName = "seqAccount", name = "seqAccountJPA")
+@SequenceGenerator(sequenceName = "seq_account", name = "seqAccountJPA",allocationSize = 1,initialValue = 300)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({ @Type(value = Formateur.class, name = "formateur"), @Type(value = Stagiaire.class, name = "stagiaire"),
 		@Type(value = Admin.class, name = "root") })

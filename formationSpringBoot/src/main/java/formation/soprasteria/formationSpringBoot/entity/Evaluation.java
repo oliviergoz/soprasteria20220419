@@ -14,7 +14,7 @@ import javax.validation.constraints.Min;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@SequenceGenerator(sequenceName = "seqEvaluation",name = "seqEvaluationJPA")
+@SequenceGenerator(sequenceName = "seq_evaluation",name = "seqEvaluationJPA",initialValue = 300,allocationSize = 1)
 public class Evaluation {
 
 	@Id

@@ -1,0 +1,88 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+  <div class="form-group">
+    <label>prenom:</label>
+    <input class="form-control" formControlName="prenom" />
+    <div
+      *ngIf="form.get('prenom')?.dirty && form.get('prenom')?.invalid"
+      class="alert alert-danger"
+    >
+      *champ obligatoire
+    </div>
+  </div>
+  <div class="form-group">
+    <label>nom:</label>
+    <input class="form-control" formControlName="nom" />
+    <div
+      *ngIf="form.get('nom')?.dirty && form.get('nom')?.invalid"
+      class="alert alert-danger"
+    >
+      *champ obligatoire
+    </div>
+  </div>
+  <div class="form-group">
+    <label>login:</label>
+    <input class="form-control" formControlName="login" />
+    <div
+      *ngIf="form.get('login')?.dirty && form.get('login')?.invalid"
+      class="alert alert-danger"
+    >
+      <ng-container *ngIf="form.get('login')?.hasError('required')">
+        *champ obligatoire
+      </ng-container>
+      <ng-container *ngIf="form.get('login')?.hasError('loginExist')">
+        *ce login est deja utilisé
+      </ng-container>
+    </div>
+  </div>
+  <ng-container formGroupName="passwordGroup">
+    <div class="form-group">
+      <label>password:</label>
+      <input type="password" class="form-control" formControlName="password" />
+      <div
+        *ngIf="
+          form.get('passwordGroup.password')?.dirty &&
+          form.get('passwordGroup.password')?.invalid
+        "
+        class="alert alert-danger"
+      >
+        *champ obligatoire
+      </div>
+    </div>
+    <div class="form-group">
+      <label>confirmation:</label>
+      <input type="password" class="form-control" formControlName="confirm" />
+      <div
+        *ngIf="
+          form.get('passwordGroup')?.hasError('passwordAndConfirmNotEquals')
+        "
+        class="alert alert-danger"
+      >
+        les 2 valeurs sont differentes
+      </div>
+    </div>
+  </ng-container>
+  <div class="form-group">
+    <input
+      type="radio"
+      class="checkbox-input"
+      formControlName="type"
+      value="formateur"
+    />
+    <label class="checkbox-label">formateur</label>
+    <input
+      type="radio"
+      class="checkbox-input"
+      formControlName="type"
+      value="stagiaire"
+    />
+    <label class="checkbox-label">stagiaire</label>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      enregistrer
+    </button>
+    <a routerLink="/home" routerLinkActive="active" class="btn btn-warning"
+      >annuler</a
+    >
+  </div>
+</form>

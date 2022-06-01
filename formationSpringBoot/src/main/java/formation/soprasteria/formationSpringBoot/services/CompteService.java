@@ -89,5 +89,9 @@ public class CompteService {
 	public Compte getByLogin(String login) {
 		return compteRepository.findByLogin(login).orElseThrow(CompteException::new);
 	}
+	
+	public boolean checkLoginExist(String login) {
+		return compteRepository.findByLogin(login).isPresent();
+	}
 
 }

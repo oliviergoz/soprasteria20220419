@@ -11,6 +11,7 @@ import { ListModuleComponent } from './formation/component/module/list-module/li
 import { EditModuleComponent } from './formation/component/module/edit-module/edit-module.component';
 import { FormulaireTemplateComponent } from './formation/component/formulaire/formulaire-template/formulaire-template.component';
 import { FormulaireCodeComponent } from './formation/component/formulaire/formulaire-code/formulaire-code.component';
+import { InscriptionComponent } from './exercice/component/inscription/inscription.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,5 +28,6 @@ export const routes: Routes = [
   { path: 'module/edit/:id', component: EditModuleComponent },
   { path: 'formulaire/template', component: FormulaireTemplateComponent },
   { path: 'formulaire/code', component: FormulaireCodeComponent },
+  { path: 'inscription', component: InscriptionComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
