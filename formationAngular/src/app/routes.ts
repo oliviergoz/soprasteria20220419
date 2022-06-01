@@ -9,6 +9,8 @@ import { Routes } from '@angular/router';
 import { EditMatiereComponent } from './formation/component/matiere/edit-matiere/edit-matiere.component';
 import { ListModuleComponent } from './formation/component/module/list-module/list-module.component';
 import { EditModuleComponent } from './formation/component/module/edit-module/edit-module.component';
+import { FormulaireTemplateComponent } from './formation/component/formulaire/formulaire-template/formulaire-template.component';
+import { FormulaireCodeComponent } from './formation/component/formulaire/formulaire-code/formulaire-code.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,5 +25,7 @@ export const routes: Routes = [
   { path: 'module', component: ListModuleComponent },
   { path: 'module/edit', component: EditModuleComponent },
   { path: 'module/edit/:id', component: EditModuleComponent },
+  { path: 'formulaire/template', component: FormulaireTemplateComponent },
+  { path: 'formulaire/code', component: FormulaireCodeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

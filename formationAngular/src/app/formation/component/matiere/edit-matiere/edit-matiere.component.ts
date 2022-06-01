@@ -29,7 +29,6 @@ export class EditMatiereComponent implements OnInit {
   }
 
   save() {
-    console.log(this.matiere);
     if (this.matiere.id) {
       //update
       this.matiereService.update(this.matiere).subscribe((data) => {

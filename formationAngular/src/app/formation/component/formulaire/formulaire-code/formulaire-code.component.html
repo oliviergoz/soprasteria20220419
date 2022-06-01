@@ -1,0 +1,25 @@
+<form (ngSubmit)="submit()" [formGroup]="monForm">
+  <div>prenom:<input formControlName="prenom" /></div>
+  <div>
+    nom:<input formControlName="nom" />
+    <span *ngIf="monForm.get('nom')?.hasError('chaineInterdite')"
+      >chaine interdite</span
+    >
+    <span *ngIf="monForm.get('nom')?.hasError('toto')">toto interdit</span>
+  </div>
+  <ng-container formGroupName="loginPasswordGroup">
+    <div>
+      login:<input formControlName="login" />
+      <span *ngIf="monForm.get('loginPasswordGroup.login')?.invalid">
+        erreur sur le login
+      </span>
+    </div>
+    <div>password:<input formControlName="password" /></div>
+    <span *ngIf="monForm.get('loginPasswordGroup')?.hasError('equals')"
+      >login et password identiques</span
+    >
+  </ng-container>
+  <div>
+    <button type="submit" [disabled]="monForm.invalid">valider</button>
+  </div>
+</form>

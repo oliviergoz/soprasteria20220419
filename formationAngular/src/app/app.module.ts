@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './formation/demo/demo.component';
 import { AutreComponent } from './formation/component/autre/autre.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CouleurComponent } from './exercice/couleur/couleur/couleur.component';
 import { PersonneComponent } from './formation/component/personne/personne.component';
 import { ShowPersonneComponent } from './formation/component/show-personne/show-personne.component';
@@ -28,6 +28,8 @@ import { MenuComponent } from './formation/component/menu/menu.component';
 import { EditMatiereComponent } from './formation/component/matiere/edit-matiere/edit-matiere.component';
 import { ListModuleComponent } from './formation/component/module/list-module/list-module.component';
 import { EditModuleComponent } from './formation/component/module/edit-module/edit-module.component';
+import { FormulaireTemplateComponent } from './formation/component/formulaire/formulaire-template/formulaire-template.component';
+import { FormulaireCodeComponent } from './formation/component/formulaire/formulaire-code/formulaire-code.component';
 
 @NgModule({
   declarations: [
@@ -53,12 +55,15 @@ import { EditModuleComponent } from './formation/component/module/edit-module/ed
     EditMatiereComponent,
     ListModuleComponent,
     EditModuleComponent,
+    FormulaireTemplateComponent,
+    FormulaireCodeComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
