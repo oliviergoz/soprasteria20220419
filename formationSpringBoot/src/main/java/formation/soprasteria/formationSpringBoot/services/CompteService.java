@@ -3,6 +3,7 @@ package formation.soprasteria.formationSpringBoot.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import formation.soprasteria.formationSpringBoot.entity.Compte;
@@ -14,6 +15,9 @@ import formation.soprasteria.formationSpringBoot.repositories.CompteRepository;
 
 @Service
 public class CompteService {
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	@Autowired
 	private CompteRepository compteRepository;
@@ -44,7 +48,7 @@ public class CompteService {
 
 	public Compte create(Compte compte) {
 		// encodage du mot de passe quand on saura faire
-		// compte.setPassword(fonctionEncodage(cpmpte.getPassword()));
+		compte.setPassword(passwordEncoder.encode(compte.getPassword()));
 		return compteRepository.save(compte);
 	}
 
