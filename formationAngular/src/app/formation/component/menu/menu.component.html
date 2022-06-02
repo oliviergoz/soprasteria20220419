@@ -1,6 +1,6 @@
 <nav>
   <a routerLink="/home" routerLinkActive="active" ngLink>home</a>
-  <a routerLink="/form" routerLinkActive="active" class="btn btn-link"
+  <!-- <a routerLink="/form" routerLinkActive="active" class="btn btn-link"
     >formulaire bonjour</a
   >
   <a
@@ -14,14 +14,14 @@
     ]"
     class="btn btn-link"
     >parametre dans footer</a
-  >
+  > -->
   <a routerLink="/matiere" routerLinkActive="active" class="btn btn-link"
     >matieres</a
   >
   <a routerLink="/module" routerLinkActive="active" class="btn btn-link"
     >modules</a
   >
-  <a
+  <!-- <a
     routerLink="/formulaire/template"
     routerLinkActive="active"
     class="btn btn-link"
@@ -32,8 +32,23 @@
     routerLinkActive="active"
     class="btn btn-link"
     >formulaire code</a
-  >
-  <a routerLink="/inscription" routerLinkActive="active" class="btn btn-link"
+  > -->
+  <a
+    *ngIf="!logged"
+    routerLink="/inscription"
+    routerLinkActive="active"
+    class="btn btn-link"
     >inscription</a
   >
+  <a
+    *ngIf="!logged"
+    routerLink="/login"
+    routerLinkActive="active"
+    class="btn btn-link"
+    >login</a
+  >
+  <span *ngIf="logged"
+    >Bonjour {{ compte?.prenom }}
+    <button (click)="logout()" class="btn btn-link">deconnexion</button>
+  </span>
 </nav>

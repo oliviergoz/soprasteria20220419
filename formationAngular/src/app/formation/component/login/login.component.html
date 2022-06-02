@@ -1,0 +1,34 @@
+<div>
+  <div *ngIf="showError">{{ message }}</div>
+  <form (ngSubmit)="submit(form)" #form="ngForm">
+    <div class="form-group">
+      <label>login</label>
+      <input
+        class="form-control"
+        name="login"
+        [(ngModel)]="login"
+        #loginCtrl="ngModel"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>mot de passe:</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        [(ngModel)]="password"
+        #passwordCtrl="ngModel"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+        envoyer
+      </button>
+      <a routerLink="/home" routerLinkActive="active" class="btn btn-warning"
+        >annuler</a
+      >
+    </div>
+  </form>
+</div>

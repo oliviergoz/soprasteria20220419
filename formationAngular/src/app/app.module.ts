@@ -31,6 +31,7 @@ import { EditModuleComponent } from './formation/component/module/edit-module/ed
 import { FormulaireTemplateComponent } from './formation/component/formulaire/formulaire-template/formulaire-template.component';
 import { FormulaireCodeComponent } from './formation/component/formulaire/formulaire-code/formulaire-code.component';
 import { InscriptionComponent } from './exercice/component/inscription/inscription.component';
+import { LoginComponent } from './formation/component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { InscriptionComponent } from './exercice/component/inscription/inscripti
     FormulaireTemplateComponent,
     FormulaireCodeComponent,
     InscriptionComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
