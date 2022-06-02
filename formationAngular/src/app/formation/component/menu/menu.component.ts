@@ -17,7 +17,6 @@ export class MenuComponent implements OnInit {
   }
 
   get compte(): Compte | null {
-    console.log(sessionStorage.getItem('compte'));
     if (sessionStorage.getItem('compte')) {
       return JSON.parse(sessionStorage.getItem('compte')!) as Compte;
     }

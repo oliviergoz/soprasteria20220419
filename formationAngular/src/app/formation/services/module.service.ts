@@ -11,35 +11,22 @@ export class ModuleService {
 
   constructor(private httpClient: HttpClient) {}
 
-  private get headers(): HttpHeaders {
-    return new HttpHeaders({
-      Authorization: 'Basic ' + btoa('admin:admin'),
-    });
-  }
-
   public getAll(): Observable<Module[]> {
-    return this.httpClient.get<Module[]>(this.url, { headers: this.headers });
+    return this.httpClient.get<Module[]>(this.url);
   }
 
   public getById(id: number): Observable<Module> {
-    return this.httpClient.get<Module>(`${this.url}/${id}`, {
-      headers: this.headers,
-    });
+    return this.httpClient.get<Module>(`${this.url}/${id}`);
   }
 
   public delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${this.url}/${id}`, {
-      headers: this.headers,
-    });
+    return this.httpClient.delete<void>(`${this.url}/${id}`);
   }
 
   public update(module: Module): Observable<Module> {
     return this.httpClient.put<Module>(
       `${this.url}/${module.id}`,
-      this.moduleToJson(module),
-      {
-        headers: this.headers,
-      }
+      this.moduleToJson(module)
     );
   }
 
@@ -59,8 +46,6 @@ export class ModuleService {
   }
 
   public create(module: Module): Observable<Module> {
-    return this.httpClient.post<Module>(this.url, this.moduleToJson(module), {
-      headers: this.headers,
-    });
+    return this.httpClient.post<Module>(this.url, this.moduleToJson(module));
   }
 }

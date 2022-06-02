@@ -13,6 +13,8 @@ import { FormulaireTemplateComponent } from './formation/component/formulaire/fo
 import { FormulaireCodeComponent } from './formation/component/formulaire/formulaire-code/formulaire-code.component';
 import { InscriptionComponent } from './exercice/component/inscription/inscription.component';
 import { LoginComponent } from './formation/component/login/login.component';
+import { AuthenticatedGuardService } from './formation/services/authenticated-guard.service';
+import { AnonymousService } from './formation/services/anonymous.service';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,12 +26,21 @@ export const routes: Routes = [
   { path: 'matiere', component: ListMatiereComponent },
   { path: 'matiere/edit', component: EditMatiereComponent },
   { path: 'matiere/edit/:id', component: EditMatiereComponent },
-  { path: 'module', component: ListModuleComponent },
+  {
+    path: 'module',
+    component: ListModuleComponent,
+    canActivate: [AuthenticatedGuardService],
+  },
   { path: 'module/edit', component: EditModuleComponent },
   { path: 'module/edit/:id', component: EditModuleComponent },
   { path: 'formulaire/template', component: FormulaireTemplateComponent },
   { path: 'formulaire/code', component: FormulaireCodeComponent },
-  { path: 'inscription', component: InscriptionComponent },
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'inscription',
+    component: InscriptionComponent,
+    canActivate: [AnonymousService],
+  },
+  { path: 'login', component: LoginComponent, canActivate: [AnonymousService] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // {path:'**',component:ErrorComponent}
 ];

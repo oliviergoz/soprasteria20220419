@@ -16,5 +16,9 @@ export class AuthService {
     });
   }
 
+  public get authenticated(): boolean {
+    return sessionStorage.getItem('token') ? true : false;
+  }
+
   constructor(private httpClient: HttpClient) {}
 }

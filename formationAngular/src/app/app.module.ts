@@ -18,7 +18,7 @@ import { ListProduitComponent } from './exercice/directive/list-produit/list-pro
 import { EditProduitComponent } from './exercice/directive/edit-produit/edit-produit.component';
 import { DemoDirective } from './formation/directive/demo.directive';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ParametreComponent } from './formation/component/parametre/parametre.component';
 import { QueryParamsComponent } from './formation/component/query-params/query-params.component';
@@ -32,6 +32,7 @@ import { FormulaireTemplateComponent } from './formation/component/formulaire/fo
 import { FormulaireCodeComponent } from './formation/component/formulaire/formulaire-code/formulaire-code.component';
 import { InscriptionComponent } from './exercice/component/inscription/inscription.component';
 import { LoginComponent } from './formation/component/login/login.component';
+import { AuthInterceptor } from './formation/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,9 @@ import { LoginComponent } from './formation/component/login/login.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
